@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* ::-webkit-scrollbar:hover {
+      overflow-y: auto;
+  } */
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d9d9d9;
+}
+
+/* Define your keyframes animation for flickering effect */
+@keyframes flickerAnimation {
+  0% {
+    background-color: black;
+    color: white;
+  }
+  50% {
+    background-color: white;
+    color: black;
+  }
+  100% {
+    background-color: black;
+    color: white;
+  }
+}
+
+/* Apply the animation to your navbar */
+.flicker-navbar {
+  animation-name: flickerAnimation;
+  animation-duration: 3s; /* 1 second for a complete cycle */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; /* Repeat the animation forever */
+}
