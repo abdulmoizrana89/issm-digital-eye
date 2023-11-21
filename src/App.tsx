@@ -1,26 +1,24 @@
-import { Navbar, Sidebar } from "./layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
-import { Grid } from "@chakra-ui/react";
+
+// TODO: convert all route/pages import into lazy
+import Home from "./pages/private/Home";
+import EditOffice from "./pages/private/Home/Edit";
+import Video from "./pages/private/Video";
+import Layout from "./pages/private/Layout";
 
 function App() {
   return (
-    <>
-      <Navbar />
-
-      <Router>
-        <Grid
-          templateColumns="2fr 12fr"
-          gridTemplateRows="min-content"
-          pt="100px"
-        >
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </Grid>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        {/* TODO: create a function to implement routes, instead manually creating routes */}
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/:id" element={<EditOffice />} />
+          <Route path="/categories" element={<Video />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

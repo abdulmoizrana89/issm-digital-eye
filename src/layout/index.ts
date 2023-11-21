@@ -2,4 +2,6 @@
 
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-export { Navbar, Sidebar };
+import MainSection from "./MainSection";
+
+export { Navbar, Sidebar, MainSection };

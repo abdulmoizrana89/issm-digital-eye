@@ -1,41 +1,42 @@
-import useStore from "../../../store";
-import { Text, Box, Flex, Code } from "@chakra-ui/react";
-import { CustomIcon } from "../../../components";
+import {
+  Text,
+  SimpleGrid,
+  Button,
+  useDisclosure,
+  Flex,
+} from "@chakra-ui/react";
+
+import MainSection from "../../../layout/MainSection";
+import SearchField from "../../../components/SearchField";
+import { useState } from "react";
 
 function Home() {
-  const { selectedComponent } = useStore();
-
-  const handleCopyCode = (code: any) => {
-    navigator.clipboard.writeText(code);
-  };
+  const { onOpen } = useDisclosure();
+  const [searchTerm, onSearchTermChange] = useState<string>("");
 
   return (
-    <Box className="w-full h-full">
-      <Flex className="flex items-center mt-10">
-        <Text className=" text-3xl font-Inter capitalize">
-          {selectedComponent.label}
-        </Text>
-      </Flex>
-      <Text className=" text-[16 px] font-Inter first-line mt-5 mb-10">
-        {selectedComponent.description}
-      </Text>
-
-      <CustomIcon icon={selectedComponent.icon} fontSize="60px" color="black" />
-
-      <Text className=" text-[20px] font-Inter">Code</Text>
-      <Code className="font-Inter w-fit bg-black overflow-scroll h-[500px] flex-col">
-        <pre className="bg-black text-white text-[14px] flex-col p-10 relative">
-          <CustomIcon
-            icon="bi:copy"
-            fontSize="30px"
-            color="white"
-            className=" absolute right-1 top-1 cursor-pointer"
-            onClick={() => handleCopyCode(selectedComponent.code)}
+    <MainSection>
+      <SimpleGrid gap={5}>
+        <Text className=" text-3xl font-Inter capitalize">Home</Text>
+        <Flex gap={2}>
+          <SearchField
+            searchTerm={searchTerm}
+            onSearchTermChange={onSearchTermChange}
           />
-          {selectedComponent.code}
-        </pre>
-      </Code>
-    </Box>
+          <Button
+            bgGradient="linear(161deg, #FF5574, #EF5350)"
+            borderRadius={5}
+            w="20%"
+            fontSize={14}
+            fontWeight="normal"
+            color="#FFFFFF"
+            onClick={onOpen}
+          >
+            Create Office
+          </Button>
+        </Flex>
+      </SimpleGrid>
+    </MainSection>
   );
 }
 
