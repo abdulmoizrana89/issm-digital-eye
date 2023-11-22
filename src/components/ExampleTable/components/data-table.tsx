@@ -26,6 +26,15 @@ import {
 } from "../../ui/table";
 
 import { DataTablePagination } from "../components/data-table-pagination";
+import {
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from "@chakra-ui/react";
+import { CustomBtn, CustomIcon } from "../..";
+import searchIcon from "@iconify/icons-carbon/search";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -71,7 +80,35 @@ export function DataTable<TData, TValue>({
   return (
     <div className="space-y-4">
       {/* <DataTableToolbar table={table} /> */}
-      <div className="flex h-fit max-h-[70vh]">
+      <Flex className="py-7 gap-x-2">
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<CustomIcon icon={searchIcon} />}
+          />
+          <Input
+            type="text"
+            placeholder="Search"
+            className="rounded-[3px]"
+            value={
+              (table.getColumn("eventName")?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table.getColumn("eventName")?.setFilterValue(event.target.value)
+            }
+          />
+        </InputGroup>
+        <CustomBtn
+          title="Filter"
+          color="slate-200"
+          borderColor="gray"
+          textColor="gray"
+          height="38px"
+          width="120px"
+          isLoading={false}
+        />
+      </Flex>
+      <div className="flex h-[66vh]">
         <Table className="bg-white">
           <TableHeader className="bg-slate-200 sticky z-10 top-0">
             {table.getHeaderGroups().map((headerGroup) => (

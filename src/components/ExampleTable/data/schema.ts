@@ -2,6 +2,15 @@ import { z } from "zod";
 
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
+
+export const EventLogSchema = z.object({
+  id: z.number(),
+  eventName: z.string(),
+  eventTime: z.string(),
+  date: z.string(),
+  device: z.string(),
+});
+
 export const taskSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -30,6 +39,8 @@ export const ProjectSchema = z.object({
   leadTime: z.string(),
   verified: z.boolean(),
 });
+
+export type EventLog = z.infer<typeof EventLogSchema>
 
 export type Task = z.infer<typeof taskSchema>;
 

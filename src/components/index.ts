@@ -10,6 +10,10 @@ import CustomToast from "./CustomToast";
 import CustomToolTip from "./CustomToolTip";
 import CustomSpinner from "./CustomSpinner";
 
+import { DataTable } from "./ExampleTable/components/data-table";
+import { EventLog } from "./ExampleTable/data/schema";
+import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
+
 export {
   CustomIcon,
   CustomBtn,
@@ -22,4 +26,9 @@ export {
   CustomToast,
   CustomToolTip,
   CustomSpinner,
+
+  DataTable,
+  DataTableColumnHeader,
 };
+
+export type { EventLog };

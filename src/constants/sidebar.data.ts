@@ -32,7 +32,7 @@ export const sidebarData = [
     component: "Icon",
     label: "Events",
     icon: "tdesign:icon",
-    path: "/events",
+    path: "/eventLogs",
   },
   {
     key: "library",
