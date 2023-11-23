@@ -9,6 +9,7 @@ import CustomErrorPrompt from "./CustomErrorPrompt";
 import CustomToast from "./CustomToast";
 import CustomToolTip from "./CustomToolTip";
 import CustomSpinner from "./CustomSpinner";
+import { ColumnChartComponent, PackageTypeBreakdownChart, SplineChartComponent, PieChartComponent } from "./Charts";
 
 export {
   CustomIcon,
@@ -22,4 +23,8 @@ export {
   CustomToast,
   CustomToolTip,
   CustomSpinner,
+  ColumnChartComponent,
+  PackageTypeBreakdownChart,
+  SplineChartComponent,
+  PieChartComponent,
 };

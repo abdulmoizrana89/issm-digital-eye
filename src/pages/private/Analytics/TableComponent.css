@@ -1,0 +1,27 @@
+/* Styling for the highlighting of the newest data */
+.highlight {
+  animation: highlight 2s ease-in-out;
+}
+
+/* Animation for highlighting */
+@keyframes highlight {
+  0% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Making the header fixed */
+.fixedHeader Thead {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Ensure the background is not transparent */
+  z-index: 1; /* Ensure it overlays the Tbody */
+}
+
+/* Padding for Tbody */
+.fixedHeader Tbody {
+  padding-top: 50px; /* Assume the header height is 50px, adjust as needed */
+}
