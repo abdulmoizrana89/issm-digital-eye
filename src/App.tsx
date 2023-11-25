@@ -5,7 +5,7 @@ import Home from "./pages/private/Home";
 import EditOffice from "./pages/private/Home/Edit";
 import Video from "./pages/private/Video";
 import Layout from "./pages/private/Layout";
-import { Analytics } from "./pages/private";
+import { Analytics, AppCategories } from "./pages/private";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <Route path="/home/:id" element={<EditOffice />} />
           <Route path="/categories" element={<Video />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/application" element={<AppCategories />} />
         </Route>
       </Routes>
     </Router>
