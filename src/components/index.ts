@@ -11,7 +11,7 @@ import CustomToolTip from "./CustomToolTip";
 import CustomSpinner from "./CustomSpinner";
 
 import { DataTable } from "./ExampleTable/components/data-table";
-import { AppCategory } from "./ExampleTable/data/schema";
+import { AppCategory, AppListing } from "./ExampleTable/data/schema";
 import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
 
 import { ColumnChartComponent, PackageTypeBreakdownChart, SplineChartComponent, PieChartComponent } from "./Charts";
@@ -38,4 +38,4 @@ export {
   PieChartComponent,
 };
 
-export type { AppCategory };
+export type { AppCategory, AppListing };

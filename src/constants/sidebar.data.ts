@@ -11,14 +11,14 @@ export const sidebarData = [
     component: "Icon",
     label: "Categories",
     icon: "tdesign:icon",
-    path: "/categories",
+    path: "/appCategories",
   },
   {
     key: "application",
     component: "Icon",
     label: "Application",
     icon: "tdesign:icon",
-    path: "/application",
+    path: "/appListings",
   },
   {
     key: "analytics",

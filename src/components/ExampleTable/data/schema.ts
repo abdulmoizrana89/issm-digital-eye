@@ -12,6 +12,15 @@ export const AppCategorySchema = z.object({
   lastUpdated: z.string(),
 });
 
+export const AppListingSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  model: z.string(),
+  createdOn: z.string(),
+  createdBy: z.string(),
+  lastUpdated: z.string(),
+});
+
 export const taskSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -42,6 +51,8 @@ export const ProjectSchema = z.object({
 });
 
 export type AppCategory = z.infer<typeof AppCategorySchema>;
+
+export type AppListing = z.infer<typeof AppListingSchema>;
 
 export type Task = z.infer<typeof taskSchema>;
 

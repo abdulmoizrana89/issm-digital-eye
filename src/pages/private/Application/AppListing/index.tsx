@@ -7,19 +7,21 @@ import {
   CustomModal,
   CustomIcon,
   DataTable,
-  AppCategory,
+  AppListing,
   CustomBtn,
 } from "./../../../../components";
 
-import { mockAppCategoryData, AppCategoryColumns } from "../../../../constants";
-import { EditCategoryForm, AddCategoryForm } from "../forms";
+import { mockAppListingsData, AppListingsColumns } from "../../../../constants";
+import { EditApplicationForm, AddApplicationForm } from "../forms";
 
-const AppCategories = () => {
+const AppListings = () => {
   //   const [rowID, setRowID] = useState<number>();
   const [rowInfo, setRowInfo] = useState<{
+    name: string;
     category: string;
     description: string;
-  }>({ category: "", description: "" });
+    model: string;
+  }>({ name: "", category: "", description: "", model: "" });
 
   const {
     isOpen: addIsOpen,
@@ -39,14 +41,16 @@ const AppCategories = () => {
 
   const handleEdit = (row: any) => {
     setRowInfo({
-      category: row.getValue("category"),
-      description: row.getValue("description"),
+      name: row.getValue("name"),
+      description: "Lorem Ipsum",
+      category: "Facial Detection",
+      model: row.getValue("model"),
     });
     console.log(rowInfo);
     editOnOpen();
   };
 
-  const editCol: ColumnDef<AppCategory> = {
+  const editCol: ColumnDef<AppListing> = {
     id: "icons",
 
     cell: ({ row }) => (
@@ -65,30 +69,28 @@ const AppCategories = () => {
     enableHiding: false,
   };
 
-  const newColumns = [...AppCategoryColumns, editCol];
+  const newColumns = [...AppListingsColumns, editCol];
 
   return (
     <div className="pt-10 px-10">
       <CustomModal
-        title="Add New Application Category"
+        title="Add New Application"
         isOpen={addIsOpen}
         onClose={addOnClose}
       >
-        <AddCategoryForm onClose={addOnClose} />
+        <AddApplicationForm onClose={addOnClose} />
       </CustomModal>
       <CustomModal
-        title="Edit Application Category"
+        title="Edit Application"
         isOpen={editIsOpen}
         onClose={editOnClose}
       >
-        <EditCategoryForm onClose={editOnClose} rowInfo={rowInfo} />
+        <EditApplicationForm onClose={editOnClose} rowInfo={rowInfo} />
       </CustomModal>
       <Flex className="justify-between w-full">
-        <Text className="font-semibold text-[26px]">
-          Application Categories
-        </Text>
+        <Text className="font-semibold text-[26px]">Application Listing</Text>
         <CustomBtn
-          title="Add Category"
+          title="Add Application"
           color="secondaryBtn"
           borderColor="secondary.10"
           bgColor="secondary.10"
@@ -100,7 +102,7 @@ const AppCategories = () => {
         />
       </Flex>
       <DataTable
-        data={mockAppCategoryData}
+        data={mockAppListingsData}
         columns={newColumns}
         onRowSelect={(row) => {
           console.log(row);
@@ -110,4 +112,4 @@ const AppCategories = () => {
   );
 };
 
-export default AppCategories;
+export default AppListings;
