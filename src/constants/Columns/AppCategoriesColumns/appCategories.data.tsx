@@ -37,12 +37,12 @@ export const AppCategoryColumns: ColumnDef<AppCategory>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "appCategory",
+    accessorKey: "category",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Application Category" />
     ),
     cell: ({ row }) => (
-      <div className="w-full capitalize">{row.getValue("appCategory")}</div>
+      <div className="w-full capitalize">{row.getValue("category")}</div>
     ),
     enableSorting: false,
     enableHiding: false,

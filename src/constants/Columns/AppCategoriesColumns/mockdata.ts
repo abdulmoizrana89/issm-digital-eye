@@ -1,7 +1,7 @@
 export const mockAppCategoryData = [
     {
       id: 0,
-      appCategory: "Face Detection",
+      category: "Face Detection",
       description:"Lorem Ipsum",
       createdOn:"08/08/2022",
       createdBy:"09/09/2023",
@@ -9,7 +9,7 @@ export const mockAppCategoryData = [
     },
     {
       id: 1,
-      appCategory: "Face Detection",
+      category: "Face Detection",
       description:"Lorem Ipsum",
       createdOn:"08/08/2022",
       createdBy:"09/09/2023",
@@ -17,7 +17,7 @@ export const mockAppCategoryData = [
     },
     {
       id: 2,
-      appCategory: "Face Detection",
+      category: "Face Detection",
       description:"Lorem Ipsum",
       createdOn:"08/08/2022",
       createdBy:"09/09/2023",

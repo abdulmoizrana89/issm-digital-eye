@@ -16,6 +16,17 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        primary: {
+          DEFAULT: "hsl(218, 19%, 38%)",
+        },
+        secondary: {
+          DEFAULT: "hsl(349, 100%, 67%)",
+        },
+        neutral: {
+          DEFAULT: "	hsl(225, 13%, 94%)",
+        },
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

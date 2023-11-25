@@ -91,12 +91,12 @@ export function DataTable<TData, TValue>({
             type="text"
             placeholder="Search"
             className="rounded-[3px]"
-            value={
-              (table.getColumn("eventName")?.getFilterValue() as string) ?? ""
-            }
-            onChange={(event) =>
-              table.getColumn("eventName")?.setFilterValue(event.target.value)
-            }
+            // value={
+            //   (table.getColumn("eventName")?.getFilterValue() as string) ?? ""
+            // }
+            // onChange={(event) =>
+            //   table.getColumn("eventName")?.setFilterValue(event.target.value)
+            // }
           />
         </InputGroup>
         <CustomBtn
