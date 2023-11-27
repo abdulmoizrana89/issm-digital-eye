@@ -1,4 +1,3 @@
-
 import { Button, Text, Box } from "@chakra-ui/react";
 
 interface CustomBtnProps {

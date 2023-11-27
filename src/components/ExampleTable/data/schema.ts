@@ -31,6 +31,15 @@ export const ProjectSchema = z.object({
   verified: z.boolean(),
 });
 
+export const LiveFeedSchema = z.object({
+  id: z.string(),
+  object_detected: z.string(),
+  object_count: z.number(),
+  timestamp: z.string(),
+});
+
+export type LiveFeed = z.infer<typeof LiveFeedSchema>;
+
 export type Task = z.infer<typeof taskSchema>;
 
 export type Employee = z.infer<typeof EmployeeSchema>;

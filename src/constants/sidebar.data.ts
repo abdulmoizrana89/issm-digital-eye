@@ -3,15 +3,15 @@ export const sidebarData = [
     key: "home",
     component: "Button",
     label: "Home",
-    icon: "radix-icons:frame",
+    icon: "tdesign:frame",
     path: "/home",
   },
   {
-    key: "categories",
+    key: "device-listing",
     component: "Icon",
-    label: "Categories",
-    icon: "tdesign:icon",
-    path: "/categories",
+    label: "Device Listing",
+    icon: "tdesign:frame",
+    path: "/device-listing",
   },
   {
     key: "application",
@@ -33,12 +33,5 @@ export const sidebarData = [
     label: "Events",
     icon: "tdesign:icon",
     path: "/events",
-  },
-  {
-    key: "library",
-    component: "Icon",
-    label: "Library",
-    icon: "tdesign:icon",
-    path: "/library",
   },
 ];
