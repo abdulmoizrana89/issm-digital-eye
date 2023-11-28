@@ -3,6 +3,15 @@
 import { AppCategoryColumns } from "./Columns/AppCategoriesColumns/appCategories.data";
 import { mockAppCategoryData } from "./Columns/AppCategoriesColumns/mockdata";
 import { AppListingsColumns } from "./Columns/AppListingsColumn/appListings.data";
-import { mockAppListingsData } from "./Columns/AppListingsColumn/mockData";
+import { mockAppListingsData } from "./Columns/AppListingsColumn/mockdata";
+import { AppDeploymentsColumns } from "./Columns/AppDeploymentsColumns/appDeployments.data";
+import { mockAppDeploymentsData } from "./Columns/AppDeploymentsColumns/mockdata";
 
-export {AppCategoryColumns, mockAppCategoryData, AppListingsColumns, mockAppListingsData}
+export {
+    AppCategoryColumns,
+    mockAppCategoryData, 
+    AppListingsColumns, 
+    mockAppListingsData, 
+    AppDeploymentsColumns, 
+    mockAppDeploymentsData
+}

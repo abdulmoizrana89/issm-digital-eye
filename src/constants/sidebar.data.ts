@@ -21,6 +21,13 @@ export const sidebarData = [
     path: "/appListings",
   },
   {
+    key: "deployments",
+    component: "Icon",
+    label: "Deployments",
+    icon: "tdesign:icon",
+    path: "/appDeployments",
+  },
+  {
     key: "analytics",
     component: "Icon",
     label: "Analytics",
