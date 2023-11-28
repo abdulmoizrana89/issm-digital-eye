@@ -1,4 +1,5 @@
 import { lazy, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -9,10 +10,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { CustomBtn, SearchField } from "../../../../components";
-import TableComponent from "./Table";
+import { CustomBtn, SearchField } from "../../../../../components";
+import TableComponent from "../../components/Table";
 
-const AddDeviceModal = lazy(() => import("./AddDeviceModal"));
+const AddDeviceModal = lazy(() => import("../../components/AddDeviceModal"));
 
 const tableData = [
   {
@@ -39,10 +40,35 @@ const tableData = [
     ip: "192.168.12.28",
     streamURL: "",
   },
+  {
+    id: "5",
+    deviceName: "First cam",
+    ip: "192.168.12.28",
+    streamURL: "",
+  },
+  {
+    id: "6",
+    deviceName: "First cam",
+    ip: "192.168.12.28",
+    streamURL: "",
+  },
+  {
+    id: "7",
+    deviceName: "First cam",
+    ip: "192.168.12.28",
+    streamURL: "",
+  },
+  {
+    id: "8",
+    deviceName: "First cam",
+    ip: "192.168.12.28",
+    streamURL: "",
+  },
 ];
 
 const CategoryInfo = ({ subCategory }: { subCategory: any }) => {
-  const { label } = subCategory;
+  const { label, id } = subCategory;
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, onSearchTermChange] = useState<string>("");
 
@@ -67,13 +93,7 @@ const CategoryInfo = ({ subCategory }: { subCategory: any }) => {
           searchTerm={searchTerm}
           onSearchTermChange={onSearchTermChange}
         />
-        <Box
-          w="full"
-          border="1px"
-          borderColor="gray.100"
-          borderRadius={5}
-          overflow="hidden"
-        >
+        <Box w="full" h="35vh" overflow="auto">
           <TableComponent data={tableData} />
         </Box>
       </VStack>
@@ -86,7 +106,7 @@ const CategoryInfo = ({ subCategory }: { subCategory: any }) => {
           textColor="#696969"
           title="View All Devices"
           onClick={() => {
-            // navigate(`/home/office/${id}`);
+            navigate(`/device-listing?id=${id}`);
           }}
         />
       </Flex>

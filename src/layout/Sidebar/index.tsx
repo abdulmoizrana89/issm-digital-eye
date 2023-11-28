@@ -33,9 +33,14 @@ const Sidebar = ({ depth = 0 }: any) => {
           >
             <Flex className={`flex items-center gap-2`}>
               <Flex>
-                <CustomIcon icon={item.icon} fontSize="20px" color="black" />
+                <CustomIcon
+                  icon={item.icon}
+                  className="text-lg text-gray-600"
+                />
               </Flex>
-              <Text className="text-[20px] font-Inter">{item.label}</Text>
+              <Text className="font-Inter text-gray-600 text-lg">
+                {item.label}
+              </Text>
             </Flex>
           </Box>
         );

@@ -15,8 +15,8 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
   const handleViewLiveStream = (data: dataType) => {};
 
   return (
-    <Box overflowY="scroll" maxH="50vh" width="100%">
-      <Table className="fixedHeader" variant="simple" size="md">
+    <Box w="full" border="1px" borderColor="gray.100" borderRadius={5}>
+      <Table className="fixedHeader" size="md">
         <Thead>
           <Tr>
             <Th>S.NO</Th>

@@ -6,11 +6,76 @@ import lineIcon from "@iconify/icons-pepicons-pencil/line-y";
 
 import { CustomIcon, SearchField } from "../../../components";
 import DeviceListingMainSection from "./MainSection";
+import { useSearchParams } from "react-router-dom";
 
 export type menuItem = {
   label: string;
   id?: number;
   children?: menuItem[];
+};
+// TODO: replace this with the api data
+const deviceListingMenu = [
+  {
+    label: "Office 1",
+    children: [
+      {
+        label: "Category 1",
+        children: [
+          { label: "First Floor", id: 1 },
+          { label: "Second Floor", id: 2 },
+          { label: "Third Floor", id: 3 },
+        ],
+      },
+      {
+        label: "Category 2",
+        children: [
+          { label: "First Floor", id: 4 },
+          { label: "Second Floor", id: 5 },
+          { label: "Third Floor", id: 6 },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Office 2",
+    children: [
+      {
+        label: "Category 1",
+        children: [
+          { label: "First Floor", id: 7 },
+          { label: "Second Floor", id: 8 },
+          { label: "Third Floor", id: 9 },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Office 3",
+    children: [
+      {
+        label: "Category 1",
+        children: [
+          { label: "First Floor", id: 10 },
+          { label: "Second Floor", id: 11 },
+          { label: "Third Floor", id: 12 },
+        ],
+      },
+    ],
+  },
+];
+
+const getMenuItemById = (id: number, items: any): menuItem | null => {
+  for (const element of items) {
+    if (element.children) {
+      const result = getMenuItemById(id, element.children);
+      if (result) {
+        return result;
+      }
+    } else {
+      if (element?.id === id) return element;
+    }
+  }
+  return null;
 };
 
 export const getDefaultMenuItem = (menuItems: menuItem): menuItem => {
@@ -19,65 +84,18 @@ export const getDefaultMenuItem = (menuItems: menuItem): menuItem => {
 };
 
 const DeviceListing = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedItem, setSelectedItem] = useState<menuItem | null>(null);
-  // TODO: replace this with the api data
-  const deviceListingMenu = useMemo(
-    () => [
-      {
-        label: "Office 1",
-        children: [
-          {
-            label: "Category 1",
-            children: [
-              { label: "First Floor", id: 1 },
-              { label: "Second Floor", id: 2 },
-              { label: "Third Floor", id: 3 },
-            ],
-          },
-          {
-            label: "Category 2",
-            children: [
-              { label: "First Floor", id: 4 },
-              { label: "Second Floor", id: 5 },
-              { label: "Third Floor", id: 6 },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Office 2",
-        children: [
-          {
-            label: "Category 1",
-            children: [
-              { label: "First Floor", id: 7 },
-              { label: "Second Floor", id: 8 },
-              { label: "Third Floor", id: 9 },
-            ],
-          },
-        ],
-      },
-      {
-        label: "Office 3",
-        children: [
-          {
-            label: "Category 1",
-            children: [
-              { label: "First Floor", id: 10 },
-              { label: "Second Floor", id: 11 },
-              { label: "Third Floor", id: 12 },
-            ],
-          },
-        ],
-      },
-    ],
-    []
-  );
 
   useEffect(() => {
-    const defaultMenuItem = getDefaultMenuItem(deviceListingMenu[0]);
-    if (!!defaultMenuItem) {
-      setSelectedItem(defaultMenuItem);
+    // TODO: not sure, whats will be the best way to handle the below scenario
+    // when user visit device listing page directly from side drawer
+    // and when user visits it from category info view all devices button
+    const id = searchParams.get("id");
+    if (id) {
+      setSelectedItem(getMenuItemById(+id, deviceListingMenu));
+    } else {
+      setSelectedItem(getDefaultMenuItem(deviceListingMenu[0]));
     }
   }, [deviceListingMenu]);
 
@@ -86,7 +104,7 @@ const DeviceListing = () => {
   };
 
   return (
-    <Grid templateColumns="2fr 10fr" minH="full">
+    <Grid templateColumns="2.5fr 9.5fr" minH="full" className="bg-white">
       <GridItem>
         <DeviceListingSideBar
           listingMenu={deviceListingMenu}
@@ -144,7 +162,7 @@ export const DeviceListingSideBar: React.FC<DeviceListingSideBarProps> = ({
   };
 
   return (
-    <Box className="h-full w-full bg-gray-100 border-r-2 px-2 py-10 sticky">
+    <Box className="h-full w-full border-r-2 px-2 py-10 sticky">
       {searchFn ? (
         <SearchField searchTerm="" onSearchTermChange={() => {}} />
       ) : null}
