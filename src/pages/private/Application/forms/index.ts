@@ -1,8 +1,8 @@
-import AddCategoryForm from "./addCategoryForm";
-import EditCategoryForm from "./editCategoryForm";
-import AddApplicationForm from "./addApplicationForm";
-import EditApplicationForm from "./editApplicationForm";
-import AddDeploymentForm from "./addDeploymentForm";
+import AddCategoryForm from "./AddCategoryForm";
+import EditCategoryForm from "./EditCategoryForm";
+import AddApplicationForm from "./AddApplicationForm";
+import EditApplicationForm from "./EditApplicationForm";
+import AddDeploymentForm from "./AddDeploymentForm";
 
 export {
     AddCategoryForm, 

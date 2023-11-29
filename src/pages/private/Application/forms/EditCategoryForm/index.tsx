@@ -1,58 +1,52 @@
-import { CustomBtn } from "../../../../components";
-import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Select } from "@chakra-ui/select";
-import { Textarea } from "@chakra-ui/textarea";
-import { Input, chakra } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Flex, Text, Select, Textarea, chakra } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import baselineClose from "@iconify/icons-ic/baseline-close";
 
-interface EditApplicationFormProps {
+import { CustomBtn, CustomIcon } from "../../../../../components";
+
+interface EditCategoryFormProps {
   onClose: () => void;
   rowInfo: {
-    name: string;
-    description: string;
     category: string;
-    model: string;
+    description: string;
   };
 }
-const EditApplicationForm = ({
-  onClose,
-  rowInfo,
-}: EditApplicationFormProps) => {
+const EditCategoryForm = ({ onClose, rowInfo }: EditCategoryFormProps) => {
   const { register, handleSubmit } = useForm();
+
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const handleSelect = (model: string) => {
+    if (!selected?.find((selectedModel) => selectedModel === model)) {
+      setSelected([...selected, model]);
+    }
+  };
+
+  const handleRemove = (model: string) => {
+    const temp = selected.filter((selectedModel) => selectedModel != model);
+    setSelected(temp);
+  };
 
   const onSubmit = (data: any) => {
     const returnData = {
-      name: data.name,
-      description: data.description,
       category: data.category,
-      model: data.model,
+      description: data.description,
+      selectedModels: selected,
     };
     console.log(returnData);
   };
+
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
 
   return (
     <div className="my-5">
       <chakra.form onSubmit={handleSubmit(onSubmit)}>
         <Box className="bg-[#F1F4F7] rounded-[3px] p-[30px] flex flex-col gap-y-5 ">
           <Box>
-            <Text>Application Name</Text>
-            <Input
-              backgroundColor="white"
-              defaultValue={rowInfo.name}
-              {...register("name")}
-            />
-          </Box>
-          <Box>
-            <Text>Description</Text>
-            <Textarea
-              backgroundColor="white"
-              placeholder="Description"
-              defaultValue={rowInfo.description}
-              {...register("description")}
-            />
-          </Box>
-          <Box>
-            <Text>Application Category</Text>
+            <Text>Name</Text>
             <Select
               bg="#F9F9F9"
               borderRadius="4px"
@@ -65,20 +59,44 @@ const EditApplicationForm = ({
             </Select>
           </Box>
           <Box>
+            <Text>Description</Text>
+            <Textarea
+              backgroundColor="white"
+              placeholder="Description"
+              defaultValue={rowInfo.description}
+              {...register("description")}
+            />
+          </Box>
+          <Box>
             <Text>Model</Text>
             <Select
               bg="#F9F9F9"
               borderRadius="4px"
               focusBorderColor="#ABACAC"
               placeholder="Search"
-              defaultValue={rowInfo.model}
-              {...register("model")}
+              onChange={(e) => {
+                if (e.target.value != "") handleSelect(e.target.value);
+              }}
             >
-              <option value={rowInfo.model}>{rowInfo.model}</option>
               <option value="Model 1">Model 1</option>
               <option value="Model 2">Model 2</option>
               <option value="Model 3">Model 3</option>
             </Select>
+            {selected?.map((model: string) => (
+              <Flex className="items-center justify-between px-2 mt-2 w-[300px] h-[35px] bg-white ">
+                <Text className="text-[16px] text-[#53565A] font-semibold ">
+                  {model}
+                </Text>
+                <CustomIcon
+                  icon={baselineClose}
+                  fontSize="24px"
+                  color="#C5C5C5"
+                  onClick={() => {
+                    handleRemove(model);
+                  }}
+                />
+              </Flex>
+            ))}
           </Box>
         </Box>
         <Flex className="justify-end mt-10 pt-5 gap-3 px-5">
@@ -108,4 +126,4 @@ const EditApplicationForm = ({
   );
 };
 
-export default EditApplicationForm;
+export default EditCategoryForm;

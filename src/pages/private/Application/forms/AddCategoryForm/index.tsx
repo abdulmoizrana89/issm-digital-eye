@@ -1,11 +1,9 @@
-import { CustomBtn, CustomIcon } from "../../../../components";
-import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Select } from "@chakra-ui/select";
-import { Textarea } from "@chakra-ui/textarea";
 import { useEffect, useState } from "react";
-import baselineClose from "@iconify/icons-ic/baseline-close";
-import { chakra } from "@chakra-ui/react";
+import { Box, Flex, Select, Textarea, Text, chakra } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import baselineClose from "@iconify/icons-ic/baseline-close";
+
+import { CustomBtn, CustomIcon } from "../../../../../components";
 
 interface AddCategoryFormProps {
   onClose: () => void;

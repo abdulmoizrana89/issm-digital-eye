@@ -1,14 +1,29 @@
-import { CustomBtn } from "../../../../components";
-import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Select } from "@chakra-ui/select";
-import { Textarea } from "@chakra-ui/textarea";
-import { Input, chakra } from "@chakra-ui/react";
+import {
+  Input,
+  chakra,
+  Box,
+  Flex,
+  Text,
+  Select,
+  Textarea,
+} from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
-interface AddApplicationFormProps {
+import { CustomBtn } from "../../../../../components";
+
+interface EditApplicationFormProps {
   onClose: () => void;
+  rowInfo: {
+    name: string;
+    description: string;
+    category: string;
+    model: string;
+  };
 }
-const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
+const EditApplicationForm = ({
+  onClose,
+  rowInfo,
+}: EditApplicationFormProps) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data: any) => {
@@ -29,7 +44,7 @@ const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
             <Text>Application Name</Text>
             <Input
               backgroundColor="white"
-              placeholder="Set Name"
+              defaultValue={rowInfo.name}
               {...register("name")}
             />
           </Box>
@@ -38,6 +53,7 @@ const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
             <Textarea
               backgroundColor="white"
               placeholder="Description"
+              defaultValue={rowInfo.description}
               {...register("description")}
             />
           </Box>
@@ -47,10 +63,11 @@ const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
               bg="#F9F9F9"
               borderRadius="4px"
               focusBorderColor="#ABACAC"
-              placeholder="Set Category"
+              placeholder="check"
+              defaultValue={rowInfo.category}
               {...register("category")}
             >
-              <option value="Facial Category">Facial Category</option>
+              <option value={rowInfo.category}>{rowInfo.category}</option>
             </Select>
           </Box>
           <Box>
@@ -60,8 +77,10 @@ const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
               borderRadius="4px"
               focusBorderColor="#ABACAC"
               placeholder="Search"
+              defaultValue={rowInfo.model}
               {...register("model")}
             >
+              <option value={rowInfo.model}>{rowInfo.model}</option>
               <option value="Model 1">Model 1</option>
               <option value="Model 2">Model 2</option>
               <option value="Model 3">Model 3</option>
@@ -95,4 +114,4 @@ const AddApplicationForm = ({ onClose }: AddApplicationFormProps) => {
   );
 };
 
-export default AddApplicationForm;
+export default EditApplicationForm;
