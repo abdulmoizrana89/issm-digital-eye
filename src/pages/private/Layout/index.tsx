@@ -5,7 +5,7 @@ import { Navbar, Sidebar } from "../../../layout";
 
 function Layout() {
   return (
-    <Grid templateColumns="2fr 10fr" templateRows="1fr 11fr" minH="inherit">
+    <Grid templateColumns="1.5fr 10.5fr" templateRows="1fr 11fr" minH="inherit">
       <GridItem colSpan={2}>
         <Navbar />
       </GridItem>
