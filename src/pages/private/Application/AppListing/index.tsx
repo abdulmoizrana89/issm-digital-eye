@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import roundEdit from "@iconify/icons-ic/round-edit";
+import searchIcon from "@iconify/icons-carbon/search";
 
 import {
   CustomModal,
@@ -87,8 +95,26 @@ const AppListings = () => {
       >
         <EditApplicationForm onClose={editOnClose} rowInfo={rowInfo} />
       </CustomModal>
-      <Flex className="justify-between w-full">
-        <Text className="font-semibold text-[26px]">Application Listing</Text>
+
+      <Text className="font-semibold text-[26px]">Application Listing</Text>
+
+      <Flex className="py-7 gap-x-2 items-center">
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<CustomIcon icon={searchIcon} />}
+          />
+          <Input type="text" placeholder="Search" className="rounded-[3px]" />
+        </InputGroup>
+        <CustomBtn
+          title="Filter"
+          color="slate-200"
+          borderColor="gray"
+          textColor="gray"
+          height="38px"
+          width="120px"
+          isLoading={false}
+        />
         <CustomBtn
           title="Add Application"
           color="secondaryBtn"
@@ -101,6 +127,7 @@ const AppListings = () => {
           onClick={() => handleAdd()}
         />
       </Flex>
+
       <DataTable
         data={mockAppListingsData}
         columns={newColumns}
