@@ -1,6 +1,17 @@
-import React, { useState } from "react";
-import { Box, Divider, Flex, Select, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Select,
+  Text,
+} from "@chakra-ui/react";
 import optionsVertical from "@iconify/icons-mi/options-vertical";
+import searchIcon from "@iconify/icons-carbon/search";
+
 import {
   CustomIcon,
   ColumnChartComponent,
@@ -94,7 +105,7 @@ const Analytics = () => {
     <div className="flex pt-10 px-10">
       <div className="flex-[60%]">
         <Text className="font-semibold text-[26px]">Analytics</Text>
-        <div className="w-[80%] mt-10">
+        <div className="w-[80%] mt-10 flex flex-col gap-y-1">
           <Text>Application Name</Text>
           <Select
             bg="#F9F9F9"
@@ -179,15 +190,22 @@ const Analytics = () => {
           </Box>
         </Box>
       </div>
-      <div className="flex-[40%] border-2 p-4 h-full w-full overflow-hidden flex flex-col items-center justify-center gap-y-3">
+      <div className="flex-[40%] mt-[82px] border-2 p-4 h-full w-full overflow-hidden flex flex-col items-center justify-center gap-y-3">
         <video width="640px" height="360px" autoPlay loop muted>
           <source src={Random} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <Divider />
-        <Box>
+        <Flex className="flex-col gap-y-2">
+          <InputGroup>
+            <InputRightElement
+              pointerEvents="none"
+              children={<CustomIcon icon={searchIcon} />}
+            />
+            <Input type="text" placeholder="Search" className="rounded-[3px]" />
+          </InputGroup>
           <TableComponent data={data} />
-        </Box>
+        </Flex>
         <Divider />
 
         <Box className="flex w-full flex-wrap">
