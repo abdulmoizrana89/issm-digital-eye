@@ -1,8 +1,16 @@
-// import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+} from "@chakra-ui/react";
+import searchIcon from "@iconify/icons-carbon/search";
 
 import {
+  CustomBtn,
+  CustomIcon,
   DataTable,
   DataTableColumnHeader,
   EventLog,
@@ -26,7 +34,28 @@ const EventLogs = () => {
 
   return (
     <div className="pt-10 px-10">
+      
       <Text className="font-semibold text-[26px]">Event Logs</Text>
+
+      <Flex className="py-7 gap-x-2 items-center">
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<CustomIcon icon={searchIcon} />}
+          />
+          <Input type="text" placeholder="Search" className="rounded-[3px]" />
+        </InputGroup>
+        <CustomBtn
+          title="Filter"
+          color="slate-200"
+          borderColor="gray"
+          textColor="gray"
+          height="38px"
+          width="120px"
+          isLoading={false}
+        />
+      </Flex>
+
       <DataTable
         data={mockEventLogData}
         columns={newColumns}

@@ -28,7 +28,7 @@ export const sidebarData = [
     path: "/analytics",
   },
   {
-    key: "events",
+    key: "eventLogs",
     component: "Icon",
     label: "Events",
     icon: "tdesign:icon",
