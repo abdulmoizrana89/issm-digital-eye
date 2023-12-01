@@ -53,6 +53,7 @@ const Circle: React.FC<any> = ({
       id="circularContainer"
       position="relative"
       w="full"
+      maxW="container.sm"
       height={`${bounds.width}px`}
       borderRadius="full"
       border="2px dashed"

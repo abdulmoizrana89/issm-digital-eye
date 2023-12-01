@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 
 import { Checkbox } from "../../../../components/ui/checkbox";
 import { DataTable } from "../../../../components/ExampleTable/components/data-table";
@@ -32,7 +33,7 @@ const columns: any = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="S.NO" />
     ),
-    cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,
+    // cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,
     enableSorting: false,
     enableHiding: false,
   },
@@ -41,6 +42,7 @@ const columns: any = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Start TIME" />
     ),
+    // TODO: add time formatter
     // cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,
     enableSorting: false,
     enableHiding: false,
@@ -50,6 +52,7 @@ const columns: any = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="END TIME" />
     ),
+    // TODO: add time formatter
     // cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,
     enableSorting: false,
     enableHiding: false,
@@ -59,6 +62,7 @@ const columns: any = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="DATE" />
     ),
+    // TODO: add date formatter
     // cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,
     enableSorting: false,
     enableHiding: false,
@@ -80,9 +84,13 @@ const dummyDataSource = [
     startTime: "06:41 PM",
     endTime: "07:41 PM",
     date: "12/08/2023",
+    device: "devide_1",
   },
 ];
-const EventRecordingsTable: React.FC<any> = ({ data = dummyDataSource }) => {
+const EventRecordingsTable: React.FC<any> = ({
+  data = dummyDataSource,
+  onViewPreview,
+}) => {
   const tableColumns = useMemo(
     () => [
       {
@@ -91,7 +99,16 @@ const EventRecordingsTable: React.FC<any> = ({ data = dummyDataSource }) => {
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="Show Camera" />
         ),
-        cell: () => <div className="w-full flex">View</div>,
+        cell: ({ row }) => {
+          return (
+            <span
+              className="underline"
+              onClick={(e) => onViewPreview(e, row.original)}
+            >
+              View
+            </span>
+          );
+        },
         enableSorting: false,
         enableHiding: false,
       },
@@ -104,19 +121,24 @@ const EventRecordingsTable: React.FC<any> = ({ data = dummyDataSource }) => {
         enableHiding: false,
       },
     ],
-    []
+    [onViewPreview]
   );
 
   const eventRecordingsTableColumns = useMemo(
     () => [...columns, ...tableColumns],
     [tableColumns]
   );
+
   return (
-    <DataTable
-      data={data}
-      columns={eventRecordingsTableColumns}
-      onRowSelect={() => {}}
-    />
+    <Flex w="full" position="relative" overflowX="hidden" h="2xl">
+      <Box w="full">
+        <DataTable
+          data={data}
+          columns={eventRecordingsTableColumns}
+          onRowSelect={() => {}}
+        />
+      </Box>
+    </Flex>
   );
 };
 

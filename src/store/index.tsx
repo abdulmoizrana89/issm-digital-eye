@@ -1,16 +1,13 @@
 import { create } from "zustand";
+import { createSidebarSlice } from "./useSidebarSlice";
 
-type State = {
-  selectedComponent: any;
-  setSelectedComponent: (component: any) => void;
-};
+// type State = {
+//   selectedComponent: any;
+//   setSelectedComponent: (component: any) => void;
+// };
 
-const useStore = create<State>((set) => ({
-  selectedComponent: "Home",
-  setSelectedComponent: (component: any) =>
-    set(() => ({
-      selectedComponent: component,
-    })),
+const useStore = create<any>((...a) => ({
+  ...createSidebarSlice(...a),
 }));
 
 export default useStore;
