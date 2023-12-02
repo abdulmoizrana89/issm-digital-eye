@@ -7,19 +7,18 @@ export const sidebarData = [
     path: "/home",
   },
   {
-
-    key: "appCategories",
-    component: "Icon",
-    label: "Categories",
-    icon: "tdesign:icon",
-    path: "/appCategories",
-
     key: "device-listing",
     component: "Icon",
     label: "Device Listing",
     icon: "tdesign:frame",
     path: "/device-listing",
-
+  },
+  {
+    key: "appCategories",
+    component: "Icon",
+    label: "Categories",
+    icon: "tdesign:icon",
+    path: "/appCategories",
   },
   {
     key: "appListings",
