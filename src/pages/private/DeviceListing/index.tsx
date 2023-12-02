@@ -1,12 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
-import { Box, Grid, GridItem, Flex } from "@chakra-ui/react";
-import collapseIcon from "@iconify/icons-ic/arrow-drop-up";
-import expandIcon from "@iconify/icons-ic/arrow-drop-down";
-import lineIcon from "@iconify/icons-pepicons-pencil/line-y";
-
-import { CustomIcon, SearchField } from "../../../components";
-import DeviceListingMainSection from "./MainSection";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Grid, GridItem } from "@chakra-ui/react";
+
+import DeviceListingMainSection from "./MainSection";
+import { DeviceListingSideBar } from "./components/DeviceListingSidebar";
 
 export type menuItem = {
   label: string;
@@ -84,6 +81,7 @@ export const getDefaultMenuItem = (menuItems: menuItem): menuItem => {
 };
 
 const DeviceListing = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedItem, setSelectedItem] = useState<menuItem | null>(null);
 
@@ -104,9 +102,17 @@ const DeviceListing = () => {
   };
 
   return (
-    <Grid templateColumns="2.5fr 9.5fr" minH="full" className="bg-white">
-      <GridItem>
+    <Grid
+      templateColumns={isCollapsed ? "0.20fr 11.80fr" : "2.5fr 9.5fr"}
+      transition={"grid-template-columns 0.5s"}
+      minH="full"
+      className="bg-white"
+    >
+      <GridItem position="relative" pr={3} overflowX="hidden">
         <DeviceListingSideBar
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
+          searchFn={() => {}}
           listingMenu={deviceListingMenu}
           item={selectedItem}
           accessorKey="id"
@@ -121,117 +127,3 @@ const DeviceListing = () => {
 };
 
 export default DeviceListing;
-
-// TODO: will replace this with the layout sidebar after adding dropdown for children element
-type DeviceListingSideBarProps = {
-  listingMenu: menuItem[];
-  item: menuItem | null;
-  accessorKey: string;
-  onItemClick: (menuItem: menuItem) => void;
-  searchFn?: () => void;
-};
-export const DeviceListingSideBar: React.FC<DeviceListingSideBarProps> = ({
-  listingMenu,
-  item,
-  accessorKey,
-  onItemClick,
-  searchFn,
-}) => {
-  const getMenu = (menu: any, depth = 0) => {
-    return menu.map((listingItem: any, index: number) => {
-      return getMenuItem(listingItem, index, depth);
-    });
-  };
-
-  const getMenuItem = (menuItem: any, index: number, depth: number) => {
-    const hasChildren = menuItem.children;
-    const subMenu = hasChildren ? getMenu(menuItem.children, depth + 1) : "";
-
-    return (
-      <MenuItem
-        accessorKey={accessorKey}
-        selectedItem={item}
-        menuItem={menuItem}
-        depth={depth}
-        key={`${depth}-${index}`}
-        onClick={onItemClick}
-      >
-        {subMenu}
-      </MenuItem>
-    );
-  };
-
-  return (
-    <Box className="h-full w-full border-r-2 px-2 py-10 sticky">
-      {searchFn ? (
-        <SearchField searchTerm="" onSearchTermChange={() => {}} />
-      ) : null}
-      <Box className={`px-1 py-2 rounded-lg`}>{getMenu(listingMenu)}</Box>
-    </Box>
-  );
-};
-
-type MenuItemProps = {
-  menuItem: menuItem | any;
-  depth: number;
-  children: any;
-  onClick: (menuItem: menuItem) => void;
-  selectedItem: menuItem | null | any;
-  accessorKey: string;
-};
-const MenuItem: React.FC<MenuItemProps> = ({
-  menuItem,
-  depth,
-  children,
-  onClick,
-  selectedItem,
-  accessorKey,
-}) => {
-  const [isCollapse, setIsCollapse] = useState<boolean>(false);
-  const hasChildren = !!children;
-
-  const handleItemCick = () => {
-    if (hasChildren) {
-      setIsCollapse(!isCollapse);
-      return;
-    }
-    onClick(menuItem);
-  };
-
-  const isSelected =
-    selectedItem && selectedItem?.[accessorKey] === menuItem[accessorKey];
-
-  let bgColor = depth === 1 ? "gray.200" : "transparent";
-  bgColor = isSelected ? "white" : bgColor;
-
-  return (
-    <Box>
-      <Box
-        onClick={handleItemCick}
-        className="cursor-pointer"
-        bg={bgColor}
-        borderTopRadius={5}
-        p={1}
-        mt={depth === 1 ? 1 : 0}
-        _last={{ borderBottomRadius: 5 }}
-      >
-        <Flex alignItems="center" gap={1}>
-          {hasChildren ? (
-            <CustomIcon icon={isCollapse ? collapseIcon : expandIcon} />
-          ) : (
-            <CustomIcon icon={lineIcon} fontSize="xl" />
-          )}
-          {menuItem.label}
-        </Flex>
-      </Box>
-      {hasChildren && !isCollapse ? (
-        <Box
-          bg={depth === 1 ? "gray.200" : "transparent"}
-          borderBottomRadius={5}
-        >
-          <Box ml={3}>{children}</Box>
-        </Box>
-      ) : null}
-    </Box>
-  );
-};

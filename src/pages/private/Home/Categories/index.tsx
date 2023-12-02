@@ -4,11 +4,8 @@ import { Grid, GridItem, Flex } from "@chakra-ui/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import {
-  DeviceListingSideBar,
-  getDefaultMenuItem,
-  menuItem,
-} from "../../DeviceListing";
+import { getDefaultMenuItem, menuItem } from "../../DeviceListing";
+import { DeviceListingSideBar } from "../../DeviceListing/components/DeviceListingSidebar";
 import { MainSection } from "../../../../layout";
 import Circle from "./components/Circle";
 import CategoryInfo from "./components/CategoryInfo";
@@ -39,6 +36,7 @@ const sidebarData = [
 
 const Categories = () => {
   const { id } = useParams();
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedItem, setSelectedItem] = useState<menuItem | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
   const [subCategories, setSubCategories] = useState([]);
@@ -66,9 +64,16 @@ const Categories = () => {
   };
 
   return (
-    <Grid templateColumns="2.5fr 5fr 4.5fr" columnGap={4} minH="full">
-      <GridItem>
+    <Grid
+      templateColumns={isCollapsed ? "0.2fr 7.3fr 4.5fr" : "2.5fr 5fr 4.5fr"}
+      transition={"grid-template-columns 0.5s"}
+      columnGap={4}
+      minH="full"
+    >
+      <GridItem position="relative" pr={3} overflow="hidden">
         <DeviceListingSideBar
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
           searchFn={() => {}}
           listingMenu={sidebarData}
           accessorKey="id"
@@ -83,6 +88,8 @@ const Categories = () => {
               justifyContent="center"
               alignItems="center"
               h="container.md"
+              flex={1}
+              w="full"
               px={10}
             >
               <DndProvider backend={HTML5Backend}>

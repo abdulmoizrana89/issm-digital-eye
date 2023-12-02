@@ -1,24 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Divider,
-  Flex,
-  Image,
-  SimpleGrid,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Divider, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 
 import { MainSection as LayoutMainSection } from "../../../layout";
-import {
-  CustomBtn,
-  CustomCard,
-  CustomIconButton,
-  SearchField,
-} from "../../../components";
-import Thumbnail from "../../../assets/images/OfficeThumbnail.svg";
-import { OfficeCardInfo } from "../Home/components/OfficeCard";
+import { SearchField } from "../../../components";
+import DeviceListingCard from "./components/DeviceListingCard";
 
 const data = [
   {
@@ -80,56 +65,3 @@ const MainSection = ({ item }: { item: string | null | any }) => {
 };
 
 export default MainSection;
-
-const DeviceListingCard: React.FC<any> = ({ id, name, ip: address }) => {
-  const navigate = useNavigate();
-  return (
-    <CustomCard
-      cardMedia={
-        <Image
-          src={Thumbnail}
-          alt="office thumbnail"
-          objectFit="cover"
-          w="full"
-          height={200}
-        />
-      }
-      content={
-        <Box mt={2}>
-          <Flex justifyContent="space-between">
-            <OfficeCardInfo {...{ name, address }} />
-            <CustomIconButton
-              icon="iconamoon:edit-light"
-              onClick={() => {
-                console.log("id=> ", id);
-                // navigate(`/home/${id}`);
-              }}
-            />
-          </Flex>
-        </Box>
-      }
-      footer={
-        <Flex wrap="wrap" gap={2}>
-          <CustomBtn
-            bgColor="#FFF"
-            width="full"
-            color="#696969"
-            borderColor="#D7D7D7"
-            textColor="#696969"
-            title="Live Video"
-            onClick={() => navigate(`/device-listing/live/${id}`)}
-          />
-          <CustomBtn
-            bgColor="#FFF"
-            width="full"
-            color="#696969"
-            borderColor="#D7D7D7"
-            textColor="#696969"
-            title="Event Recordings"
-            onClick={() => navigate(`/events/${id}`)}
-          />
-        </Flex>
-      }
-    />
-  );
-};
