@@ -14,9 +14,24 @@ import { DataTable } from "./ExampleTable/components/data-table";
 import { AppCategory, AppListing, AppDeployment } from "./ExampleTable/data/schema";
 import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
 
-import { ColumnChartComponent, PackageTypeBreakdownChart, SplineChartComponent, PieChartComponent } from "./Charts";
+
+import {
+  ColumnChartComponent,
+  PackageTypeBreakdownChart,
+  SplineChartComponent,
+  PieChartComponent,
+} from "./Charts";
+import CustomIconButton from "./CustomIconBtn";
+import FormFields from "./FormFields";
+import CustomModalFooter from "./CustomModal/CustomModalFooter";
+import SearchField from "./SearchField";
+
 
 export {
+  SearchField,
+  CustomModalFooter,
+  FormFields,
+  CustomIconButton,
   CustomIcon,
   CustomBtn,
   CustomCard,
