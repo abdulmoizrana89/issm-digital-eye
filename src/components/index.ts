@@ -9,6 +9,12 @@ import CustomErrorPrompt from "./CustomErrorPrompt";
 import CustomToast from "./CustomToast";
 import CustomToolTip from "./CustomToolTip";
 import CustomSpinner from "./CustomSpinner";
+
+import { DataTable } from "./ExampleTable/components/data-table";
+import { AppCategory, AppListing, AppDeployment } from "./ExampleTable/data/schema";
+import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
+
+
 import {
   ColumnChartComponent,
   PackageTypeBreakdownChart,
@@ -23,6 +29,7 @@ import SearchField from "./SearchField";
 import { DataTable } from "./ExampleTable/components/data-table";
 import { EventLog } from "./ExampleTable/data/schema";
 import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
+
 
 export {
   SearchField,
@@ -51,4 +58,5 @@ export {
 
 };
 
-export type { EventLog };
+export type { EventLog, AppCategory, AppListing, AppDeployment };
+

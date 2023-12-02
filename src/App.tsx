@@ -6,7 +6,13 @@ import EditOffice from "./pages/private/Home/Edit";
 import Video from "./pages/private/Video";
 import Layout from "./pages/private/Layout";
 
-import { Analytics, EventLogs } from "./pages/private";
+import {
+  EventLogs,
+  Analytics,
+  AppCategories,
+  AppDeployments,
+  AppListings,
+} from "./pages/private";
 import { Suspense, lazy } from "react";
 
 const DeviceListing = lazy(() => import("./pages/private/DeviceListing"));
@@ -34,6 +40,11 @@ function App() {
           />
           <Route path="/categories" element={<Video />} />
           <Route path="/analytics" element={<Analytics />} />
+
+          <Route path="/appCategories" element={<AppCategories />} />
+          <Route path="/appListings" element={<AppListings />} />
+          <Route path="/appDeployments" element={<AppDeployments />} />
+
           <Route
             path="/device-listing"
             element={
@@ -60,6 +71,7 @@ function App() {
           />
           <Route path="/categories" element={<Video />} />
           <Route path="/eventLogs" element={<EventLogs />} />
+
         </Route>
       </Routes>
     </Router>

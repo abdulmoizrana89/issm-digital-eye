@@ -2,5 +2,6 @@
 
 import EventLogs from "./EventLogs";
 import Analytics from "./Analytics";
+import { AppCategories, AppListings, AppDeployments } from "./Application";
 
-export {EventLogs, Analytics}
+export { EventLogs, Analytics, AppCategories, AppListings, AppDeployments}

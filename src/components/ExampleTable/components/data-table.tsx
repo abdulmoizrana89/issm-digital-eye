@@ -27,6 +27,15 @@ import {
 
 import { DataTablePagination } from "../components/data-table-pagination";
 
+import {
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from "@chakra-ui/react";
+import { CustomBtn, CustomIcon } from "../..";
+import searchIcon from "@iconify/icons-carbon/search";
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];

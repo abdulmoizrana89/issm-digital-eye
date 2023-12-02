@@ -3,6 +3,34 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 
+
+export const AppCategorySchema = z.object({
+  id: z.number(),
+  category: z.string(),
+  description: z.string(),
+  createdOn: z.string(),
+  createdBy: z.string(),
+  lastUpdated: z.string(),
+});
+
+export const AppListingSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  model: z.string(),
+  createdOn: z.string(),
+  createdBy: z.string(),
+  lastUpdated: z.string(),
+});
+
+export const AppDeploymentSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  appName: z.string(),
+  createdOn: z.string(),
+  implementedOn: z.string(),
+  videoFeed: z.string(),
+  });
+
 export const EventLogSchema = z.object({
   id: z.number(),
   eventName: z.string(),
@@ -10,6 +38,14 @@ export const EventLogSchema = z.object({
   date: z.string(),
   device: z.string(),
 });
+
+export const LiveFeedSchema = z.object({
+  id: z.string(),
+  object_detected: z.string(),
+  object_count: z.number(),
+  timestamp: z.string(),
+});
+
 
 export const taskSchema = z.object({
   id: z.string(),
@@ -41,14 +77,14 @@ export const ProjectSchema = z.object({
 });
 
 
-export type EventLog = z.infer<typeof EventLogSchema>
 
-export const LiveFeedSchema = z.object({
-  id: z.string(),
-  object_detected: z.string(),
-  object_count: z.number(),
-  timestamp: z.string(),
-});
+export type AppCategory = z.infer<typeof AppCategorySchema>;
+
+export type AppListing = z.infer<typeof AppListingSchema>;
+
+export type AppDeployment = z.infer<typeof AppDeploymentSchema>;
+
+export type EventLog = z.infer<typeof EventLogSchema>
 
 export type LiveFeed = z.infer<typeof LiveFeedSchema>;
 
