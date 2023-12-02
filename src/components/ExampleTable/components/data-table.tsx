@@ -31,12 +31,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   onRowSelect: (row: TData) => void;
+  pagination?: boolean | object;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   onRowSelect,
+  pagination = true,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -127,7 +129,12 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      {pagination ? (
+        <DataTablePagination
+          table={table}
+          {...(typeof pagination === "boolean" ? {} : { ...pagination })}
+        />
+      ) : null}
     </div>
   );
 }

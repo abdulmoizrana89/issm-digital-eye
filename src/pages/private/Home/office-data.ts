@@ -1,0 +1,42 @@
+export const data = [
+  {
+    id: "1",
+    thumbnail: "",
+    name: "Office 1",
+    address: "Boulevard Roard",
+    categories: 10,
+    subCategories: 20,
+  },
+  {
+    id: "2",
+    thumbnail: "",
+    name: "Office 1",
+    address: "Boulevard Roard asdad asd asdas d ada da dasd sadasdas d",
+    categories: 10,
+    subCategories: 20,
+  },
+  {
+    id: "3",
+    thumbnail: "",
+    name: "Office 1",
+    address: "Boulevard Roard",
+    categories: 10,
+    subCategories: 20,
+  },
+  {
+    id: "4",
+    thumbnail: "",
+    name: "Office 1",
+    address: "Boulevard Roard",
+    categories: 10,
+    subCategories: 20,
+  },
+  {
+    id: "5",
+    thumbnail: "",
+    name: "Office 1",
+    address: "Boulevard Roard",
+    categories: 10,
+    subCategories: 20,
+  },
+];
