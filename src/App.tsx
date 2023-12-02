@@ -5,13 +5,15 @@ import Home from "./pages/private/Home";
 import EditOffice from "./pages/private/Home/Edit";
 import Video from "./pages/private/Video";
 import Layout from "./pages/private/Layout";
-import { Analytics } from "./pages/private";
+
+import { Analytics, EventLogs } from "./pages/private";
 import { Suspense, lazy } from "react";
 
 const DeviceListing = lazy(() => import("./pages/private/DeviceListing"));
 const Live = lazy(() => import("./pages/private/Live"));
 const Categories = lazy(() => import("./pages/private/Home/Categories"));
 const Events = lazy(() => import("./pages/private/Events"));
+
 
 function App() {
   return (
@@ -57,6 +59,7 @@ function App() {
             }
           />
           <Route path="/categories" element={<Video />} />
+          <Route path="/eventLogs" element={<EventLogs />} />
         </Route>
       </Routes>
     </Router>

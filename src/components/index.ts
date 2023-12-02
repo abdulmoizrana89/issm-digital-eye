@@ -20,6 +20,10 @@ import FormFields from "./FormFields";
 import CustomModalFooter from "./CustomModal/CustomModalFooter";
 import SearchField from "./SearchField";
 
+import { DataTable } from "./ExampleTable/components/data-table";
+import { EventLog } from "./ExampleTable/data/schema";
+import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
+
 export {
   SearchField,
   CustomModalFooter,
@@ -36,8 +40,15 @@ export {
   CustomToast,
   CustomToolTip,
   CustomSpinner,
+
+  DataTable,
+  DataTableColumnHeader,
+
   ColumnChartComponent,
   PackageTypeBreakdownChart,
   SplineChartComponent,
   PieChartComponent,
+
 };
+
+export type { EventLog };
