@@ -7,12 +7,12 @@ import Video from "./pages/private/Video";
 import Layout from "./pages/private/Layout";
 
 import {
+  EventLogs,
   Analytics,
   AppCategories,
   AppDeployments,
   AppListings,
 } from "./pages/private";
-
 import { Suspense, lazy } from "react";
 
 const DeviceListing = lazy(() => import("./pages/private/DeviceListing"));
@@ -69,6 +69,8 @@ function App() {
               </Suspense>
             }
           />
+          <Route path="/categories" element={<Video />} />
+          <Route path="/eventLogs" element={<EventLogs />} />
 
         </Route>
       </Routes>

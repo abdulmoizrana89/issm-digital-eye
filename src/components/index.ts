@@ -26,6 +26,10 @@ import FormFields from "./FormFields";
 import CustomModalFooter from "./CustomModal/CustomModalFooter";
 import SearchField from "./SearchField";
 
+import { DataTable } from "./ExampleTable/components/data-table";
+import { EventLog } from "./ExampleTable/data/schema";
+import { DataTableColumnHeader } from "./ExampleTable/components/data-table-column-header";
+
 
 export {
   SearchField,
@@ -51,6 +55,8 @@ export {
   PackageTypeBreakdownChart,
   SplineChartComponent,
   PieChartComponent,
+
 };
 
-export type { AppCategory, AppListing, AppDeployment };
+export type { EventLog, AppCategory, AppListing, AppDeployment };
+

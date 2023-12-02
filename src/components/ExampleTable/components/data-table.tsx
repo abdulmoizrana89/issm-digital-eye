@@ -81,7 +81,6 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      
       <div className="flex h-[66vh]">
         <Table className="bg-white">
           <TableHeader className="bg-slate-200 sticky z-10 top-0">
