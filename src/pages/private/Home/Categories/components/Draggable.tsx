@@ -1,10 +1,15 @@
 import { Box } from "@chakra-ui/react";
 import { useDrag } from "react-dnd";
 
-const DraggableBox: React.FC<any> = ({ children, item, ...props }: any) => {
+const DraggableBox: React.FC<any> = ({
+  children,
+  item,
+  index,
+  ...props
+}: any) => {
   const [collected, dragRef, dragPreview] = useDrag({
     type: "element",
-    item: { ...item },
+    item: { ...item, index },
   });
 
   return (

@@ -56,7 +56,7 @@ const DeviceListingCard: React.FC<any> = ({ id, name, ip: address }) => {
             variant="outline"
             bg="white"
             fontSize="sm"
-            onClick={() => navigate(`/events/${id}`)}
+            onClick={() => navigate(`/eventLogs/${id}`)}
           >
             Event Recordings
           </Button>

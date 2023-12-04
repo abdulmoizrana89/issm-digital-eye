@@ -4,6 +4,7 @@ import { useDrop } from "react-dnd";
 const DroppableBox: React.FC<any> = ({
   children,
   position,
+  index,
   item: source,
   onDrop,
 }) => {
@@ -11,7 +12,7 @@ const DroppableBox: React.FC<any> = ({
   const [collectedProps, drop] = useDrop({
     accept: "element",
     drop(item, monitor) {
-      onDrop(source, item);
+      onDrop({ ...source, index }, item);
       return {};
     },
     canDrop(item, monitor) {

@@ -33,18 +33,12 @@ const Circle: React.FC<any> = ({
   const radius = bounds?.width / 2;
 
   const handleDrop = (source: any, destination: any) => {
-    const { id: sourceId } = source;
-    const { id: destinationId } = destination;
-    const updatedList = subCategories.map((item: any) => {
-      if (item.id === sourceId) {
-        return { ...destination };
-      }
-      if (item.id === destinationId) {
-        return { ...source };
-      }
-      return item;
-    });
-    updateSubCategoryList(updatedList);
+    const { id: sourceId, index: sourceIndex } = source;
+    const { id: destinationId, index: destinationIndex } = destination;
+
+    subCategories.splice(destinationIndex, 1);
+    subCategories.splice(sourceIndex, 0, destination);
+    updateSubCategoryList([...subCategories]);
   };
 
   return (
@@ -66,11 +60,13 @@ const Circle: React.FC<any> = ({
           <DroppableBox
             key={index}
             position={{ x, y }}
+            index={index}
             item={item}
             onDrop={handleDrop}
           >
             <DraggableBox
               key={index}
+              index={index}
               item={item}
               onClick={() => onSelectSubCategory(item)}
             >
