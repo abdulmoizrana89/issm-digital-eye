@@ -47,7 +47,7 @@ const OfficeForm = ({
   onSubmit: (data: any) => void;
   onClose: () => void;
 }) => {
-  const { handleSubmit, register, control, ...restFormMethods } =
+  const { handleSubmit, register, control, getValues, ...restFormMethods } =
     useForm<FormValues>({
       defaultValues: {
         name: "",
@@ -56,17 +56,31 @@ const OfficeForm = ({
         categories: [],
       },
     });
-  const { fields, remove, prepend } = useFieldArray({
+  const { fields, remove, prepend, update } = useFieldArray({
     control,
     name: "categories",
   });
 
   const handleAddCategory = () => {
-    prepend({ name: "", subCategory: [{ name: "" }] });
+    prepend({ name: "" });
+  };
+
+  const handleAddSubCategory = (index: any) => {
+    const category = getValues("categories")[index].name;
+    update(index, { name: category, subCategory: [{ name: "" }] });
+  };
+
+  const deleteSubCategory = (index: any) => {
+    const category = getValues("categories")[index].name;
+    update(index, {
+      name: category,
+    });
   };
 
   return (
-    <FormProvider {...{ handleSubmit, register, control, ...restFormMethods }}>
+    <FormProvider
+      {...{ handleSubmit, register, control, getValues, ...restFormMethods }}
+    >
       <chakra.form onSubmit={handleSubmit(onSubmit)}>
         <FormFields fields={formFields} />
 
@@ -85,30 +99,62 @@ const OfficeForm = ({
         <VStack gap={2} w="full">
           {fields.map((item, index) => (
             <Box key={item.id} bg="gray.100" w="full" p="5">
-              <HStack alignItems="flex-start" justifyContent="flex-start">
-                <FormControl id={item.id} isRequired={true} w="max">
-                  <FormLabel>Category</FormLabel>
-                  <Input
-                    bg="white"
-                    {...register(`categories.${index}.name` as const)}
-                  />
-                </FormControl>
+              <HStack alignItems="flex-start">
+                <VStack>
+                  <FormControl id={item.id} isRequired={true} w="max">
+                    <FormLabel>Category</FormLabel>
+                    <Input
+                      bg="white"
+                      {...register(`categories.${index}.name` as const)}
+                    />
+                  </FormControl>
+                  <HStack justifyContent="flex-end" w="full">
+                    {/* TODO: discuss, how to delete a category */}
+                    {/* <Button
+                      key={`delete-category-${index}`}
+                      mt={2}
+                      variant="outline"
+                      color="#FF5574"
+                      borderColor="#FF5574"
+                      fontWeight="normal"
+                      size="sm"
+                      onClick={() => remove(index)}
+                    >
+                      Delete
+                    </Button> */}
+                    {item.subCategory?.length ? (
+                      <Button
+                        key={`delete-sub-category-${index}`}
+                        mt={2}
+                        variant="ghost"
+                        color="#FF5574"
+                        borderColor="#FF5574"
+                        size="sm"
+                        onClick={() => deleteSubCategory(index)}
+                      >
+                        - delete Sub-Category
+                      </Button>
+                    ) : (
+                      <Button
+                        key={`add-sub-category-${index}`}
+                        mt={2}
+                        variant="ghost"
+                        color="#FF5574"
+                        borderColor="#FF5574"
+                        size="sm"
+                        onClick={() => handleAddSubCategory(index)}
+                      >
+                        + add Sub-Category
+                      </Button>
+                    )}
+                  </HStack>
+                </VStack>
                 <SubCategory
                   categoryIndex={index}
                   control={control}
                   register={register}
                 />
               </HStack>
-              <Button
-                mt={2}
-                variant="outline"
-                color="#FF5574"
-                borderColor="#FF5574"
-                fontWeight="normal"
-                onClick={() => remove(index)}
-              >
-                Delete
-              </Button>
             </Box>
           ))}
         </VStack>
@@ -154,7 +200,7 @@ const SubCategory = ({
 
   return (
     <Box w="full">
-      <Text>Sub-Category</Text>
+      {fields.length ? <Text>Sub-Category</Text> : null}
       {fields.map((item, index) => (
         <Flex key={item.id} mt={2} gap={2}>
           <FormControl id={item.id}>

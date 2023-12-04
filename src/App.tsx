@@ -20,7 +20,6 @@ const Live = lazy(() => import("./pages/private/Live"));
 const Categories = lazy(() => import("./pages/private/Home/Categories"));
 const Events = lazy(() => import("./pages/private/Events"));
 
-
 function App() {
   return (
     <Router>
@@ -62,7 +61,7 @@ function App() {
             }
           />
           <Route
-            path="/events/:id"
+            path="/eventLogs/:id"
             element={
               <Suspense fallback={<>...loading</>}>
                 <Events />
@@ -71,7 +70,6 @@ function App() {
           />
           <Route path="/categories" element={<Video />} />
           <Route path="/eventLogs" element={<EventLogs />} />
-
         </Route>
       </Routes>
     </Router>
