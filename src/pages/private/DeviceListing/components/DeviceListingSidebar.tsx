@@ -18,6 +18,7 @@ type DeviceListingSideBarProps = {
   onItemClick: (menuItem: menuItem) => void;
   searchFn?: () => void;
 };
+
 export const DeviceListingSideBar: React.FC<DeviceListingSideBarProps> = ({
   isCollapsed,
   setIsCollapsed,
