@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack, useDisclosure } from "@chakra-ui/react";
 import lineIcon from "@iconify/icons-pepicons-pencil/line-x";
 
 import DroppableBox from "./Droppable";
@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
 } from "../../../../../components/ui/popover";
 import { CustomIcon } from "../../../../../components";
+import useStore from "../../../../../store";
 
 const getElementPosition = (index: any, totalItems: any, radius: any) => {
   const angle = (index / totalItems) * 2 * Math.PI;
@@ -70,9 +71,7 @@ const Circle: React.FC<any> = ({
               item={item}
               onClick={() => onSelectSubCategory(item)}
             >
-              <Text>{item.label}</Text>
-
-              <PopoverNotification />
+              <SubCategoryEle item={item} index={index} />
             </DraggableBox>
           </DroppableBox>
         );
@@ -83,66 +82,93 @@ const Circle: React.FC<any> = ({
 
 export default Circle;
 
-const eventLogs = [
-  { event: "Person Detected", timestamp: "10:32:56PM 11/10/2023" },
-  { event: "Object Detected", timestamp: "10:32:56PM 11/10/2023" },
-];
+const SubCategoryEle: React.FC<any> = ({ item, index }) => {
+  const removeEventLogs = useStore((state: any) => state.removeEventLogs);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-const PopoverNotification = () => {
+  const handleOnPopoverChange = () => {
+    if (isOpen) {
+      removeEventLogs(index);
+      onClose();
+    } else {
+      onOpen();
+    }
+  };
+
   return (
-    <Box
-      position="absolute"
-      right="0"
-      bottom="0"
-      transform="translate(50%, 50%)"
-    >
-      <Popover>
-        <PopoverTrigger>
-          <Box
-            className=" text-white text-xs"
-            bg="#FF5574"
-            w="5"
-            h="5"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            borderRadius="full"
-          >
-            {eventLogs.length}
-          </Box>
-        </PopoverTrigger>
-        <PopoverContent align="start" className="border-red-300 w-full">
-          <VStack w="full" alignItems="flex-start">
-            <Text className="font-bold text-gray-500 text-sm">
-              Events Triggered
-            </Text>
-            {eventLogs.map(({ event, timestamp }, index) => {
-              return (
-                <Flex
-                  key={`event-${index}`}
-                  justifyContent="space-between"
-                  alignItems="center"
-                  w="full"
-                  gap={5}
-                >
-                  <Flex gap={2} alignItems="center">
-                    <CustomIcon
-                      icon={lineIcon}
-                      fontSize="lg"
-                      className="text-red-800 cursor-not-allowed"
-                    />
-                    <Text className="text-gray-500 text-sm">{event}</Text>
-                  </Flex>
-                  <Box>
-                    <Text className="text-gray-500 text-sm">{timestamp}</Text>
-                  </Box>
-                </Flex>
-              );
-            })}
-          </VStack>
-        </PopoverContent>
-      </Popover>
+    <Box>
+      <Text>{item.label}</Text>
+      {item.eventLogs.length ? (
+        <Box
+          position="absolute"
+          right="0"
+          bottom="0"
+          transform="translate(50%, 50%)"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <PopoverNotification
+            isOpen={isOpen}
+            eventLogs={item.eventLogs}
+            handleOnPopoverChange={handleOnPopoverChange}
+          />
+        </Box>
+      ) : null}
     </Box>
+  );
+};
+
+const PopoverNotification: React.FC<any> = ({
+  isOpen,
+  eventLogs,
+  handleOnPopoverChange,
+}) => {
+  return (
+    <Popover open={isOpen} onOpenChange={handleOnPopoverChange}>
+      <PopoverTrigger>
+        <Box
+          className=" text-white text-xs"
+          bg="#FF5574"
+          w="5"
+          h="5"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          borderRadius="full"
+        >
+          {eventLogs.length}
+        </Box>
+      </PopoverTrigger>
+      <PopoverContent align="start" className="border-red-300 w-full">
+        <VStack w="full" alignItems="flex-start">
+          <Text className="font-bold text-gray-500 text-sm">
+            Events Triggered
+          </Text>
+          {eventLogs.map(({ event, timestamp }: any, index: number) => {
+            return (
+              <Flex
+                key={`event-${index}`}
+                justifyContent="space-between"
+                alignItems="center"
+                w="full"
+                gap={5}
+              >
+                <Flex gap={2} alignItems="center">
+                  <CustomIcon
+                    icon={lineIcon}
+                    fontSize="lg"
+                    className="text-red-800 cursor-not-allowed"
+                  />
+                  <Text className="text-gray-500 text-sm">{event}</Text>
+                </Flex>
+                <Box>
+                  <Text className="text-gray-500 text-sm">{timestamp}</Text>
+                </Box>
+              </Flex>
+            );
+          })}
+        </VStack>
+      </PopoverContent>
+    </Popover>
   );
 };
 

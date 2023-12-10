@@ -3,25 +3,29 @@ import { useParams } from "react-router-dom";
 import { Grid, GridItem, Flex } from "@chakra-ui/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { useQuery } from "@tanstack/react-query";
 
 import { getDefaultMenuItem, menuItem } from "../../DeviceListing";
 import { DeviceListingSideBar } from "../../DeviceListing/components/DeviceListingSidebar";
 import { MainSection } from "../../../../layout";
 import Circle from "./components/Circle";
 import CategoryInfo from "./components/CategoryInfo";
+import useStore from "../../../../store";
+import { useCategoriesSocket } from "../../../../hooks";
+import { getCategories, CATEGORIES_QUERY_KEY } from "../../../../http";
 
 const categoryMap = [
   [
-    { label: "First Floor", id: 0 },
-    { label: "Second Floor", id: 1 },
-    { label: "Third Floor", id: 2 },
-    { label: "Four Floor", id: 3 },
+    { events: [], label: "First Floor", id: 0 },
+    { events: [], label: "Second Floor", id: 1 },
+    { events: [], label: "Third Floor", id: 2 },
+    { events: [], label: "Four Floor", id: 3 },
   ],
   [
-    { label: "Meeting Room 1", id: 4 },
-    { label: "Meeting Room 2", id: 5 },
-    { label: "Meeting Room 3", id: 6 },
-    { label: "Meeting Room 4", id: 7 },
+    { events: [], label: "Meeting Room 1", id: 4 },
+    { events: [], label: "Meeting Room 2", id: 5 },
+    { events: [], label: "Meeting Room 3", id: 6 },
+    { events: [], label: "Meeting Room 4", id: 7 },
   ],
 ];
 const sidebarData = [
@@ -36,16 +40,30 @@ const sidebarData = [
 
 const Categories = () => {
   const { id } = useParams();
+  // Add socket handler inside useCategoriesSocket hook
+  const { sendData } = useCategoriesSocket();
+  // sidebar data
+  const { data: _data, isLoading: _isLoading } = useQuery({
+    queryKey: [CATEGORIES_QUERY_KEY, id],
+    queryFn: () => getCategories(id),
+    refetchOnWindowFocus: false,
+    retry: 3,
+  });
+
+  // TODO: resolve subcategories handling and socket channel on select different category
+  const subCategoriess = useStore((state: any) => state.subCategories);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedItem, setSelectedItem] = useState<menuItem | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
-  const [subCategories, setSubCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState<any>([]);
 
   useEffect(() => {
     const defaultMenuItem = getDefaultMenuItem(sidebarData[0]);
     if (!!defaultMenuItem) {
       setSelectedItem(defaultMenuItem);
-      setSubCategories(categoryMap?.[defaultMenuItem?.id]);
+
+      const { id = 0 } = defaultMenuItem;
+      setSubCategories(categoryMap[id]);
     }
   }, []);
 
@@ -95,7 +113,8 @@ const Categories = () => {
               <DndProvider backend={HTML5Backend}>
                 <Circle
                   category={selectedItem}
-                  subCategories={subCategories}
+                  // subCategories={subCategories}
+                  subCategories={subCategoriess}
                   onSelectSubCategory={onSelectSubCategory}
                   updateSubCategoryList={updateSubCategoryList}
                 />
