@@ -11,7 +11,7 @@ function Layout() {
     <Grid
       templateColumns={isCollapsed ? "0.60fr 11.40fr" : "1.5fr 10.5fr"}
       transition="grid-template-columns 0.5s"
-      templateRows="1fr 11fr"
+      templateRows="0.74fr 11fr"
       h="100vh"
     >
       <GridItem colSpan={2}>

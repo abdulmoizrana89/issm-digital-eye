@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Flex, Box, Text } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import expandIcon from "@iconify/icons-material-symbols/chevron-left";
@@ -7,7 +7,23 @@ import { sidebarData } from "../../constants/sidebar.data";
 import { CustomIcon } from "../../components";
 import useStore from "../../store";
 
+type Menu = {
+  key: string;
+  component: string;
+  label: string;
+  icon: string;
+  path: string;
+  subMenu: {
+    key: string;
+    component: string;
+    label: string;
+    icon: string;
+    path: string;
+  }[];
+};
+
 const Sidebar = ({ depth = 0 }: any) => {
+  const [selected, setSelected] = useState<Menu>();
   const location = useLocation();
   const navigate = useNavigate();
   const isCollapsed = useStore((state) => state.isCollapsed);
@@ -41,29 +57,58 @@ const Sidebar = ({ depth = 0 }: any) => {
         {sidebarData.map((item, index) => {
           const isSelected = selectedItem === item.key;
           return (
-            <Box
-              key={`${item.key}-${index}`}
-              className={`px-5 py-2 rounded-lg cursor-pointer border-2 border-transparent hover:bg-white ${
-                isSelected ? "bg-white border-2 border-gray-200" : ""
-              }`}
-              onClick={() => handleSelectDrawerItem(item)}
-            >
-              <Flex className={`flex items-center gap-2`}>
-                <Box>
-                  <CustomIcon
-                    icon={item.icon}
-                    className="text-xl text-gray-600"
-                  />
-                </Box>
-                <Text
-                  overflow="hidden"
-                  whiteSpace="nowrap"
-                  className="font-Inter text-gray-600 text-lg"
-                >
-                  {item.label}
-                </Text>
-              </Flex>
-            </Box>
+            <>
+              <Box
+                key={`${item.key}-${index}`}
+                className={`px-5 py-2 rounded-lg cursor-pointer border-2 border-transparent hover:bg-white ${
+                  isSelected ? "bg-white border-2 border-gray-200" : ""
+                }`}
+                onClick={() => {
+                  setSelected(item);
+                  handleSelectDrawerItem(item);
+                }}
+              >
+                <Flex className={`flex items-center gap-2`}>
+                  <Box>
+                    <CustomIcon
+                      icon={item.icon}
+                      className="text-xl text-gray-600"
+                    />
+                  </Box>
+                  <Text
+                    overflow="hidden"
+                    whiteSpace="nowrap"
+                    className="font-Inter text-gray-600 text-lg"
+                  >
+                    {item.label}
+                  </Text>
+                </Flex>
+              </Box>
+
+              {selected == item &&
+                selected?.subMenu.map((subItem, subIndex) => {
+                  const isSelected = selectedItem === subItem.key;
+                  return (
+                    <Box
+                      key={`${subItem.key}-${subIndex}`}
+                      className={`ml-7 px-5 py-2 rounded-lg cursor-pointer border-2 border-transparent hover:bg-white ${
+                        isSelected ? "bg-white border-2 border-gray-200" : ""
+                      }`}
+                      onClick={() => handleSelectDrawerItem(subItem)}
+                    >
+                      <Flex className={`flex flex-end items-center gap-2`}>
+                        <Text
+                          overflow="hidden"
+                          whiteSpace="nowrap"
+                          className="font-Inter text-gray-600 text-lg"
+                        >
+                          {subItem.label}
+                        </Text>
+                      </Flex>
+                    </Box>
+                  );
+                })}
+            </>
           );
         })}
       </Box>

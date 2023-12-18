@@ -5,6 +5,7 @@ export const sidebarData = [
     label: "Home",
     icon: "icon-park-outline:all-application",
     path: "/home",
+    subMenu: [],
   },
   {
     key: "device-listing",
@@ -12,6 +13,7 @@ export const sidebarData = [
     label: "Device Listing",
     icon: "icon-park-outline:all-application",
     path: "/device-listing",
+    subMenu: [],
   },
   {
     key: "appListings",
@@ -19,20 +21,22 @@ export const sidebarData = [
     label: "Application",
     icon: "mdi:calendar-outline",
     path: "/appListings",
-  },
-  {
-    key: "appCategories",
-    component: "Icon",
-    label: "Categories",
-    icon: "mdi:calendar-outline",
-    path: "/appCategories",
-  },
-  {
-    key: "appDeployments",
-    component: "Icon",
-    label: "Deployments",
-    icon: "mdi:calendar-outline",
-    path: "/appDeployments",
+    subMenu: [
+      {
+        key: "appCategories",
+        component: "Icon",
+        label: "Categories",
+        icon: "mdi:calendar-outline",
+        path: "/appCategories",
+      },
+      {
+        key: "appDeployments",
+        component: "Icon",
+        label: "Deployments",
+        icon: "mdi:calendar-outline",
+        path: "/appDeployments",
+      },
+    ],
   },
   {
     key: "analytics",
@@ -40,6 +44,7 @@ export const sidebarData = [
     label: "Analytics",
     icon: "ion:location-outline",
     path: "/analytics",
+    subMenu: [],
   },
   {
     key: "eventLogs",
@@ -47,5 +52,6 @@ export const sidebarData = [
     label: "Events",
     icon: "mdi:text-box-multiple-outline",
     path: "/eventLogs",
+    subMenu: [],
   },
 ];
