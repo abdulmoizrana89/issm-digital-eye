@@ -4,6 +4,7 @@ import { Box, Divider, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { MainSection as LayoutMainSection } from "../../../layout";
 import { SearchField } from "../../../components";
 import DeviceListingCard from "./components/DeviceListingCard";
+import AddDeviceModal from "../Home/components/AddDeviceModal";
 
 const data = [
   {
@@ -39,6 +40,7 @@ const data = [
 ];
 
 const MainSection = ({ item }: { item: string | null | any }) => {
+  const [editItemId, setEditItemId] = useState(null);
   const [searchTerm, onSearchTermChange] = useState<string>("");
   const title = item?.label || "";
 
@@ -56,10 +58,22 @@ const MainSection = ({ item }: { item: string | null | any }) => {
         />
         <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} spacing={4} mt={2}>
           {data.map((device, index) => (
-            <DeviceListingCard key={`device-lisi-card-${index}`} {...device} />
+            <DeviceListingCard
+              key={`device-lisi-card-${index}`}
+              {...device}
+              handleEdit={setEditItemId}
+            />
           ))}
         </SimpleGrid>
       </VStack>
+      {/* Todo: write a wrapper to fetch device data and handle edit behavior */}
+      {!!editItemId ? (
+        <AddDeviceModal
+          mode="edit"
+          isOpen={true}
+          onClose={() => setEditItemId(null)}
+        />
+      ) : null}
     </LayoutMainSection>
   );
 };

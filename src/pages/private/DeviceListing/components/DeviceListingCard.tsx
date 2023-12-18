@@ -5,7 +5,12 @@ import { CustomCard, CustomIconButton } from "../../../../components";
 import { OfficeCardInfo } from "../../Home/components/OfficeCard";
 import Thumbnail from "../../../../assets/images/OfficeThumbnail.svg";
 
-const DeviceListingCard: React.FC<any> = ({ id, name, ip: address }) => {
+const DeviceListingCard: React.FC<any> = ({
+  id,
+  name,
+  ip: address,
+  handleEdit,
+}) => {
   const navigate = useNavigate();
   return (
     <CustomCard
@@ -24,10 +29,7 @@ const DeviceListingCard: React.FC<any> = ({ id, name, ip: address }) => {
             <OfficeCardInfo {...{ name, address }} />
             <CustomIconButton
               icon="iconamoon:edit-light"
-              onClick={() => {
-                console.log("id=> ", id);
-                // navigate(`/home/${id}`);
-              }}
+              onClick={() => handleEdit(id)}
             />
           </Flex>
         </Box>
