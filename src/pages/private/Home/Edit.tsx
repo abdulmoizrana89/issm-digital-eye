@@ -1,18 +1,19 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import OfficeForm from "./components/OfficeForm";
 import { MainSection } from "../../../layout";
 
 const EditOffice = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const { id } = params;
 
   const onSubmit = (data: any) => {
     console.log("data=> ", data);
   };
 
-  const onClose = () => {};
+  const onClose = () => navigate("/home", { replace: true });
 
   return (
     <MainSection>
