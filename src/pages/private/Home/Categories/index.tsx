@@ -22,10 +22,10 @@ const categoryMap = [
     { events: [], label: "Four Floor", id: 3 },
   ],
   [
-    { events: [], label: "Meeting Room 1", id: 4 },
-    { events: [], label: "Meeting Room 2", id: 5 },
-    { events: [], label: "Meeting Room 3", id: 6 },
-    { events: [], label: "Meeting Room 4", id: 7 },
+    { events: [], label: "Meeting Room 1", id: 6 },
+    { events: [], label: "Meeting Room 2", id: 7 },
+    { events: [], label: "Meeting Room 3", id: 8 },
+    { events: [], label: "Meeting Room 4", id: 9 },
   ],
 ];
 const sidebarData = [
@@ -41,14 +41,16 @@ const sidebarData = [
 const Categories = () => {
   const { id } = useParams();
   // Add socket handler inside useCategoriesSocket hook
-  const { sendData } = useCategoriesSocket();
+  // const { sendData } = useCategoriesSocket();
+
   // sidebar data
-  const { data: _data, isLoading: _isLoading } = useQuery({
-    queryKey: [CATEGORIES_QUERY_KEY, id],
-    queryFn: () => getCategories(id),
-    refetchOnWindowFocus: false,
-    retry: 3,
-  });
+  // TODO: get sidebar data from backend
+  // const { data: _data, isLoading: _isLoading } = useQuery({
+  //   queryKey: [CATEGORIES_QUERY_KEY, id],
+  //   queryFn: () => getCategories(id),
+  //   refetchOnWindowFocus: false,
+  //   retry: 3,
+  // });
 
   // TODO: resolve subcategories handling and socket channel on select different category
   const subCategoriess = useStore((state: any) => state.subCategories);

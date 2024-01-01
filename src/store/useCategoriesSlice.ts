@@ -22,7 +22,10 @@ export const createCategoriesSlice: StateCreator<ICategoriesSlice> = (
     },
     { eventLogs: [], label: "Second Floor", id: 1 },
     { eventLogs: [], label: "Third Floor", id: 2 },
-    { eventLogs: [], label: "Four Floor", id: 3 },
+    { eventLogs: [], label: "Fourth Floor", id: 3 },
+    { eventLogs: [], label: "Fifth Floor", id: 4 },
+    { eventLogs: [], label: "Sixth Floor", id: 5 },
+    { eventLogs: [], label: "Seventh Floor", id: 6 },
   ],
   addEventLog: (id: any, event: any) => {
     console.log("event=> ", id, event);

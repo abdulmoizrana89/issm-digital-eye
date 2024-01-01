@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 
+// TODO: revisit and verify the types
+interface Measure {
+  height: number;
+  width: number;
+}
+
 const useMeasure = (ref: any) => {
-  const [element, attachEle] = useState<any>(null);
-  const [bounds, setBounds] = useState({});
+  const [element, attachEle] = useState<HTMLElement | null | any>(null);
+  const [bounds, setBounds] = useState<Measure>({ width: 0, height: 0 });
   useEffect(() => {
-    function onResize([entry]) {
+    function onResize([entry]: ResizeObserverEntry[]) {
       setBounds({
         height: entry.contentRect.height,
         width: entry.contentRect.width,
