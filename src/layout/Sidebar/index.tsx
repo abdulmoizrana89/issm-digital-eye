@@ -76,7 +76,9 @@ const Sidebar = ({ depth = 0 }: any) => {
                 <Text
                   overflow="hidden"
                   whiteSpace="nowrap"
-                  className="font-Inter text-gray-600 text-lg"
+                  className={`font-Inter text-gray-600 text-lg ${
+                    isSelected ? "text-[#4F5D75]" : ""
+                  }`}
                 >
                   {item.label}
                 </Text>

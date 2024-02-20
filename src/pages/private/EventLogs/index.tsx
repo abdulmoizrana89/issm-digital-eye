@@ -34,8 +34,7 @@ const EventLogs = () => {
 
   return (
     <div className="pt-10 px-10">
-      
-      <Text className="font-semibold text-[26px]">Event Logs</Text>
+      <Text className="text-2xl font-bold text-[#4F5D75] pb-5">Event Logs</Text>
 
       <Flex className="py-7 gap-x-2 items-center">
         <InputGroup>

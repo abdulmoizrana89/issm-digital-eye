@@ -47,7 +47,9 @@ const MainSection = ({ item }: { item: string | null | any }) => {
   return (
     <LayoutMainSection>
       <VStack alignItems="flex-start" gap={4}>
-        <Text className="text-3xl font-Inter capitalize">Device Listing</Text>
+        <Text className="text-2xl font-bold text-[#4F5D75] pb-5 font-Inter capitalize">
+          Device Listing
+        </Text>
         <Box w="full">
           <Text>{title}</Text>
           <Divider />

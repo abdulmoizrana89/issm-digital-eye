@@ -92,7 +92,9 @@ const AppCategories = () => {
         <EditCategoryForm onClose={editOnClose} rowInfo={rowInfo} />
       </CustomModal>
 
-      <Text className="font-semibold text-[26px]">Application Categories</Text>
+      <Text className="text-2xl font-bold text-[#4F5D75] pb-5">
+        Application Categories
+      </Text>
 
       <Flex className="py-7 gap-x-2 items-center">
         <InputGroup>

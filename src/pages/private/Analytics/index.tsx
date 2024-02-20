@@ -104,7 +104,9 @@ const Analytics = () => {
   return (
     <div className="flex pt-10 px-10">
       <div className="flex-[60%]">
-        <Text className="font-semibold text-[26px]">Analytics</Text>
+        <Text className="text-2xl font-bold text-[#4F5D75] pb-5">
+          Analytics
+        </Text>
         <div className="w-[80%] mt-10 flex flex-col gap-y-1">
           <Text>Application Name</Text>
           <Select

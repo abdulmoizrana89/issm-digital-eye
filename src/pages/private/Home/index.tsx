@@ -20,8 +20,10 @@ function Home() {
 
   return (
     <MainSection>
-      <Text className="text-3xl font-Inter capitalize">Home</Text>
-      <Flex gap={2}>
+      <Text className="text-2xl font-bold text-[#4F5D75] pb-5 font-Inter capitalize">
+        Home
+      </Text>
+      <Flex gap={2} paddingBottom={5}>
         <SearchField
           searchTerm={searchTerm}
           onSearchTermChange={onSearchTermChange}
@@ -29,7 +31,7 @@ function Home() {
         <Button
           bgGradient="linear(161deg, #FF5574, #EF5350)"
           borderRadius={5}
-          w="20%"
+          w="10%"
           fontSize={14}
           fontWeight="normal"
           color="#FFFFFF"
