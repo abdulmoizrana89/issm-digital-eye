@@ -47,6 +47,7 @@ const EventLogs = () => {
         <CustomBtn
           title="Filter"
           color="slate-200"
+          bgColor="#F9FAFC"
           borderColor="gray"
           textColor="gray"
           height="38px"

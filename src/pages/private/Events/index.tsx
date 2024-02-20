@@ -6,12 +6,16 @@ import {
   Button,
   useDisclosure,
   VStack,
+  Input,
+  InputGroup,
+  InputLeftElement,
 } from "@chakra-ui/react";
 
 import { MainSection } from "../../../layout";
-import { SearchField } from "../../../components";
+import { SearchField, CustomIcon } from "../../../components";
 import EventRecordingsTable from "./components/EventRecordingTable";
 import EventPreview from "./components/EventPreview";
+import searchIcon from "@iconify/icons-carbon/search";
 
 const Events = () => {
   const [searchTerm, onSearchTermChange] = useState<string>("");
@@ -46,10 +50,17 @@ const Events = () => {
         </Box>
         <Box w="full" position="relative" overflowX="hidden">
           <Flex w="full" gap={2}>
-            <SearchField
-              searchTerm={searchTerm}
-              onSearchTermChange={onSearchTermChange}
-            />
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<CustomIcon icon={searchIcon} />}
+              />
+              <Input
+                type="text"
+                placeholder="Search"
+                className="rounded-[3px]"
+              />
+            </InputGroup>
             <Button
               variant="outline"
               border="1px"
