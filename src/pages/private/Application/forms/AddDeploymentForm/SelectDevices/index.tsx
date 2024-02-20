@@ -90,7 +90,7 @@ const SelectDevices = () => {
           />
           <Input type="text" placeholder="Search" className="rounded-[3px]" />
         </InputGroup>
-        <Flex className="flex-col gap-y-2 mt-5 pb-1 max-h-[300px] overflow-y-scroll">
+        <Flex className="flex-col gap-y-1 mt-5 pb-1 max-h-[300px] overflow-y-scroll">
           {data.map((office) => {
             return (
               <Box
@@ -111,7 +111,7 @@ const SelectDevices = () => {
           <Text>{data[selectedOffice]?.officeName}</Text>
         </Box>
 
-        <Box className="pt-5 pl-5 flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll">
+        <Box className="pt-5 pl-5 flex flex-col gap-y-2 max-h-[300px] overflow-y-scroll">
           {data[selectedOffice]?.categories.map((category) => {
             return (
               <Box className=" bg-[#F1F4F7] rounded">
