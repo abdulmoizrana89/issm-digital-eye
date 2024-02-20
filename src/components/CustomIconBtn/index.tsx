@@ -15,7 +15,7 @@ const CustomIconButton = ({ icon, onClick }: ICustomIconButton) => {
       variant="outline"
       aria-label={`${icon} button`}
       onClick={onClick}
-      icon={<CustomIcon color="#696969" icon={icon} />}
+      icon={<CustomIcon fontSize="13px" color="#696969" icon={icon} />}
     />
   );
 };

@@ -8,6 +8,7 @@ import {
   Input,
   Text,
   VStack,
+  Divider,
   chakra,
 } from "@chakra-ui/react";
 import { useForm, useFieldArray, FormProvider } from "react-hook-form";
@@ -36,7 +37,7 @@ const formFields = [
     address: { type: "text", label: "Location", required: true },
   },
   {
-    description: { type: "text", label: "description", required: true },
+    description: { type: "text", label: "Description", required: true },
   },
 ];
 
@@ -92,13 +93,15 @@ const OfficeForm = ({
             color="#FF5574"
             onClick={handleAddCategory}
           >
-            + add category
+            + Add category
           </Button>
         </Flex>
 
+        <Divider />
+
         <VStack gap={2} w="full">
           {fields.map((item, index) => (
-            <Box key={item.id} bg="gray.100" w="full" p="5">
+            <Box key={item.id} bg="#F1F4F7" w="full" p="5">
               <HStack alignItems="flex-start">
                 <VStack>
                   <FormControl id={item.id} isRequired={true} w="max">

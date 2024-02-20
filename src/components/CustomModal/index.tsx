@@ -22,12 +22,15 @@ const CustomModal = ({
   children,
 }: CustomModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale" size={size ? size : "3xl"}
-    
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      motionPreset="scale"
+      size={size ? size : "3xl"}
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
+        <ModalHeader className="text-[#4F5D75]">{title}</ModalHeader>
         <ModalBody>{children}</ModalBody>
       </ModalContent>
     </Modal>

@@ -28,6 +28,7 @@ const CustomModalFooter = ({
           color="#FF5574"
           fontSize={14}
           fontWeight="normal"
+          className="w-[120px]"
           {...cancelBtnProps}
         >
           {closeBtnText}
@@ -40,6 +41,7 @@ const CustomModalFooter = ({
           fontSize={14}
           fontWeight="normal"
           color="#FFFFFF"
+          className="w-[120px]"
           onClick={onSubmit}
           {...submitBtnProps}
         >
