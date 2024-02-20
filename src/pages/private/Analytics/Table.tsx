@@ -22,7 +22,7 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
 
   return (
     <Box overflowY="scroll" height="50vh" width="100%">
-      <Table className="fixedHeader" variant="simple" size="md">
+      <Table className="fixedHeader" variant="simple" size="lg">
         <Thead>
           <Tr>
             <Th>Objects Detected</Th>

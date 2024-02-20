@@ -128,9 +128,9 @@ const Analytics = () => {
                 />
               </Flex>
               <div className="px-5">
-                <Text className="font-semibold text-[50px]">100</Text>
+                <Text className="text-[50px] text-[#13465B]">100</Text>
                 <Text className="font-semibold text-[16px]">
-                  Production Pre Minute
+                  Production Per Minute
                 </Text>
               </div>
             </Box>

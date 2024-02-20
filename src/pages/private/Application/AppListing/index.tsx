@@ -65,7 +65,7 @@ const AppListings = () => {
       <div className="flex gap-x-2">
         <CustomIcon
           icon={roundEdit}
-          fontSize="24px"
+          fontSize="20px"
           color="#C5C5C5"
           onClick={() => {
             handleEdit(row);
@@ -110,6 +110,7 @@ const AppListings = () => {
         </InputGroup>
         <CustomBtn
           title="Filter"
+          bgColor="#F9FAFC"
           color="slate-200"
           borderColor="gray"
           textColor="gray"
@@ -124,7 +125,7 @@ const AppListings = () => {
           bgColor="secondary.10"
           textColor="#fff"
           height="38px"
-          width="120px"
+          width="140px"
           isLoading={false}
           onClick={() => handleAdd()}
         />
