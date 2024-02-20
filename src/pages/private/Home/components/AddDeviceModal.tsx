@@ -90,6 +90,7 @@ const AddDeviceModal: React.FC<AddDeviceModalProps> = ({
 
   return (
     <CustomModal
+      size="4xl"
       title={`${isEditMode ? "Edit" : "Add New"} Device`}
       isOpen={isOpen}
       onClose={handleCloseModal}
@@ -125,6 +126,7 @@ const AddDeviceModal: React.FC<AddDeviceModalProps> = ({
                 fontSize={14}
                 fontWeight="normal"
                 color="#FFFFFF"
+                w="20%"
                 onClick={handleTestStreamURL}
               >
                 Test

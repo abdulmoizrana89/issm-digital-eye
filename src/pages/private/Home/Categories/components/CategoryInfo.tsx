@@ -76,13 +76,14 @@ const CategoryInfo = ({ subCategory }: { subCategory: any }) => {
     <Box h="full" w="full">
       <VStack p={2}>
         <Flex w="full" justifyContent="space-between" alignItems="center">
-          <Text>{label}</Text>
+          <Text className="font-semibold text-[#4F5D75] text-lg">{label}</Text>
           <Button
             bgGradient="linear(161deg, #FF5574, #EF5350)"
             borderRadius={5}
             fontSize={14}
             fontWeight="normal"
             color="#FFFFFF"
+            w="20%"
             onClick={onOpen}
           >
             Add Device

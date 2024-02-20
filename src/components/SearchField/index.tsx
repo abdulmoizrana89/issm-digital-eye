@@ -59,6 +59,7 @@ const SearchField = forwardRef(
               <InputRightElement>
                 <ChakraIcon
                   fontSize="16"
+                  color="#696969"
                   as={Icon}
                   icon={"material-symbols:search"}
                 />
