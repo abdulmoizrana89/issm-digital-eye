@@ -19,7 +19,7 @@ const Live = () => {
           </Box>
         </GridItem>
         <GridItem>
-          <Box w="full" p={4}>
+          <Box w="full">
             <Analytics />
           </Box>
         </GridItem>

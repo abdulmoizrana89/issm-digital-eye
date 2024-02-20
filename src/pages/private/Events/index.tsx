@@ -40,7 +40,7 @@ const Events = () => {
     <MainSection>
       <VStack w="full" gap={5}>
         <Box w="full">
-          <Text className="text-3xl font-Inter capitalize">
+          <Text className="text-3xl text-[#4F5D75] font-Inter capitalize">
             Event Recordings
           </Text>
         </Box>
@@ -80,6 +80,7 @@ const Events = () => {
           <Box w="full" mt={2}>
             <EventRecordingsTable
               // data={[]}
+
               columns={[]}
               onRowSelect={() => {}}
               onViewPreview={onViewPreview}

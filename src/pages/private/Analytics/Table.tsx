@@ -37,9 +37,9 @@ const TableComponent: React.FC<TableProps> = ({ data }) => {
               className={index === data.length - 1 ? "highlight" : ""}
               ref={index === data.length - 1 ? lastRowRef : null}
             >
-              <Td>{row.objectDetected}</Td>
-              <Td>{row.objectCount}</Td>
-              <Td>{row.timestamp}</Td>
+              <Td className="text-sm">{row.objectDetected}</Td>
+              <Td className="text-sm">{row.objectCount}</Td>
+              <Td className="text-sm">{row.timestamp}</Td>
             </Tr>
           ))}
         </Tbody>

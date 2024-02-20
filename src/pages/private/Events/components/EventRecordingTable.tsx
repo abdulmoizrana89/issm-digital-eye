@@ -40,7 +40,7 @@ const columns: any = [
   {
     accessorKey: "startTime",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Start TIME" />
+      <DataTableColumnHeader column={column} title="START TIME" />
     ),
     // TODO: add time formatter
     // cell: ({ row }) => <div className="w-full">{row.index + 1}</div>,

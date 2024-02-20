@@ -25,7 +25,7 @@ export const OfficeCardInfo = ({
   subCategories,
 }: IOficeCardInfoProps) => (
   <Box>
-    <Text className="font-bold text-xl">{name}</Text>
+    <Text className=" text-xl">{name}</Text>
     {address ? <Text>Location: {address}</Text> : null}
 
     <Box mt={2}>

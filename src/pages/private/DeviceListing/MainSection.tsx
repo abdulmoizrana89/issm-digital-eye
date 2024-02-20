@@ -10,7 +10,7 @@ const data = [
   {
     id: "1",
     thumbnail: "",
-    name: "eeting 1",
+    name: "Meeting 1",
     ip: "192.168.10.28",
   },
   {

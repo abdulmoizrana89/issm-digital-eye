@@ -109,7 +109,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const isSelected =
     selectedItem && selectedItem?.[accessorKey] === menuItem[accessorKey];
 
-  let bgColor = depth === 1 ? "gray.200" : "transparent";
+  let bgColor = depth === 1 ? "#F1F4F7" : "transparent";
   bgColor = isSelected ? "white" : bgColor;
 
   return (
@@ -134,11 +134,15 @@ const MenuItem: React.FC<MenuItemProps> = ({
       </Box>
       {hasChildren && !isCollapse ? (
         <Box
-          bg={depth === 1 ? "gray.200" : "transparent"}
+          bg={depth === 1 ? "#F1F4F7" : "transparent"}
           borderBottomRadius={5}
         >
           <Box ml={3} pr={3}>
-            {children}
+            {depth === 1 ? (
+              <Text className="text-sm text-[#696969]">{children}</Text>
+            ) : (
+              <Text>{children}</Text>
+            )}
           </Box>
         </Box>
       ) : null}

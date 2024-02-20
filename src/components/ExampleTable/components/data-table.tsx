@@ -27,12 +27,7 @@ import {
 
 import { DataTablePagination } from "../components/data-table-pagination";
 
-import {
-  Flex,
-  Input,
-  InputGroup,
-  InputLeftElement,
-} from "@chakra-ui/react";
+import { Flex, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { CustomBtn, CustomIcon } from "../..";
 import searchIcon from "@iconify/icons-carbon/search";
 
@@ -83,7 +78,7 @@ export function DataTable<TData, TValue>({
     <div className="space-y-4">
       <div className="flex h-[66vh]">
         <Table className="bg-white">
-          <TableHeader className="bg-slate-200 sticky z-10 top-0">
+          <TableHeader className="bg-slate-200 sticky z-10 top-0 border-y-[2px] border-t-[#F9FAFC]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {

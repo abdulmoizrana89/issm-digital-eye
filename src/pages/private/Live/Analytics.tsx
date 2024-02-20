@@ -64,8 +64,9 @@ const Analytics = () => {
       <SearchField searchTerm={searchTerm} onSearchTermChange={setSearchTerm} />
       <Box
         w="full"
-        border="1px"
+        border="4px"
         borderColor="gray.100"
+        borderTopColor="#4E5C73"
         borderRadius={5}
         overflow="hidden"
       >
