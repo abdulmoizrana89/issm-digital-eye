@@ -112,8 +112,8 @@ const AppListings = () => {
           title="Filter"
           bgColor="#F9FAFC"
           color="slate-200"
-          borderColor="gray"
-          textColor="gray"
+          borderColor="#d7d7d7"
+          textColor="#696969"
           height="38px"
           width="120px"
           isLoading={false}

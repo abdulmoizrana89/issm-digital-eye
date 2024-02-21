@@ -23,7 +23,7 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
   if (!column.getCanSort()) {
-    return <div className={cn("text-[#1b1c1e]", className)}>{title}</div>;
+    return <div className={cn("text-[#4f5d75]", className)}>{title}</div>;
   }
 
   return (

@@ -64,12 +64,13 @@ const Events = () => {
             <Button
               variant="outline"
               border="1px"
-              borderColor="gray"
+              borderColor="#d7d7d7"
+              bgColor="#F9FAFC"
               borderRadius={5}
               w="20%"
               fontSize={14}
-              fontWeight="normal"
-              color="gray"
+              fontWeight="400"
+              color="#696969"
               onClick={onFilterOpen}
             >
               Filter
@@ -77,12 +78,13 @@ const Events = () => {
             <Button
               variant="outline"
               border="1px"
-              borderColor="gray"
+              borderColor="#d7d7d7"
+              bgColor="#F9FAFC"
               borderRadius={5}
               w="20%"
               fontSize={14}
-              fontWeight="normal"
-              color="gray"
+              fontWeight="400"
+              color="#696969"
               onClick={onSettingOpen}
             >
               Setting

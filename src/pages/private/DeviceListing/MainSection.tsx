@@ -58,7 +58,7 @@ const MainSection = ({ item }: { item: string | null | any }) => {
           searchTerm={searchTerm}
           onSearchTermChange={onSearchTermChange}
         />
-        <SimpleGrid columns={{ sm: 2, md: 3, lg: 4 }} spacing={4} mt={2}>
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 4 }} spacing={5} mt={2}>
           {data.map((device, index) => (
             <DeviceListingCard
               key={`device-lisi-card-${index}`}
