@@ -1,6 +1,7 @@
 import { Box, Text, Grid, GridItem, Flex } from "@chakra-ui/react";
 import { MainSection } from "../../../layout";
 import Analytics from "./Analytics";
+import { CEMENT_BAGS } from "/src/assets/index";
 
 const Live = () => {
   return (
@@ -14,7 +15,17 @@ const Live = () => {
               <Text>Live Feed</Text>
             </Flex>
             <Box mt={2}>
-              <video width="100%" height="100px" controls />
+              <video
+                key={CEMENT_BAGS}
+                width="100%"
+                height="100px"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={CEMENT_BAGS} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </Box>
           </Box>
         </GridItem>

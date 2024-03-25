@@ -12,13 +12,13 @@ interface PieChartProps {
   data: PieChartData;
 }
 
-const PieChartComponent: React.FC<PieChartProps> = ({ data }) => {
+const PieChartComponent: React.FC<PieChartProps> = ({ data, name }) => {
   const options: Highcharts.Options = {
     chart: {
       type: "pie",
     },
     title: {
-      text: "Production Ratio",
+      text: name,
       align: "left",
       x: 10,
     },

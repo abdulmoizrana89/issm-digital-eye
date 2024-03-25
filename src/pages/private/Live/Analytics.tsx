@@ -8,54 +8,34 @@ const Analytics = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [data, setData] = useState([
     {
-      objectDetected: "Car",
+      objectDetected: "Cement Type 1",
       objectCount: 3,
       timestamp: "2023-09-01T12:00:00Z",
     },
     {
-      objectDetected: "Bike",
+      objectDetected: "Cement Type 2",
       objectCount: 5,
       timestamp: "2023-09-01T12:05:00Z",
     },
     {
-      objectDetected: "Bus",
+      objectDetected: "Cement Type 3",
       objectCount: 2,
       timestamp: "2023-09-01T12:10:00Z",
     },
     {
-      objectDetected: "Truck",
-      objectCount: 1,
-      timestamp: "2023-09-01T12:15:00Z",
-    },
-    {
-      objectDetected: "Scooter",
-      objectCount: 4,
-      timestamp: "2023-09-01T12:20:00Z",
-    },
-    {
-      objectDetected: "Pedestrian",
-      objectCount: 6,
-      timestamp: "2023-09-01T12:25:00Z",
-    },
-    {
-      objectDetected: "Cyclist",
+      objectDetected: "Cement Type 4",
       objectCount: 3,
-      timestamp: "2023-09-01T12:30:00Z",
+      timestamp: "2023-09-01T12:10:00Z",
     },
     {
-      objectDetected: "Van",
-      objectCount: 2,
-      timestamp: "2023-09-01T12:35:00Z",
-    },
-    {
-      objectDetected: "Motorbike",
-      objectCount: 5,
-      timestamp: "2023-09-01T12:40:00Z",
-    },
-    {
-      objectDetected: "Trolley",
+      objectDetected: "Cement Type 4",
       objectCount: 1,
-      timestamp: "2023-09-01T12:45:00Z",
+      timestamp: "2023-09-01T12:10:00Z",
+    },
+    {
+      objectDetected: "Cement Type 5",
+      objectCount: 8,
+      timestamp: "2023-09-01T12:10:00Z",
     },
   ]);
 

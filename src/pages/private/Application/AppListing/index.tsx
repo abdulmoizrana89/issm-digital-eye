@@ -50,8 +50,8 @@ const AppListings = () => {
   const handleEdit = (row: any) => {
     setRowInfo({
       name: row.getValue("name"),
-      description: "Lorem Ipsum",
-      category: "Facial Detection",
+      description: row.getValue("description"),
+      category: "Detection Modal",
       model: row.getValue("model"),
     });
     console.log(rowInfo);

@@ -14,13 +14,16 @@ interface ColumnChartProps {
   data: ColumnChartData[];
 }
 
-const PackageTypeBreakdownChart: React.FC<ColumnChartProps> = ({ data }) => {
+const PackageTypeBreakdownChart: React.FC<ColumnChartProps> = ({
+  data,
+  name,
+}) => {
   const options: Highcharts.Options = {
     chart: {
       type: "column",
     },
     title: {
-      text: "Average Monthly Production",
+      text: name,
     },
     xAxis: {
       categories: [""],

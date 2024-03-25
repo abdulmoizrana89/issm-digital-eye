@@ -39,7 +39,7 @@ const SplineChartComponent: React.FC<SplineChartProps> = ({ month }) => {
       type: "spline",
     },
     title: {
-      text: "Monthly Production per Line",
+      text: "Live Detection",
       align: "left",
       x: 5,
     },

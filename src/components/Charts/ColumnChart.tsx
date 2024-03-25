@@ -15,13 +15,17 @@ interface ColumnChartProps {
   data: ColumnChartData[];
 }
 
-const ColumnChartComponent: React.FC<ColumnChartProps> = ({ month, data }) => {
+const ColumnChartComponent: React.FC<ColumnChartProps> = ({
+  month,
+  data,
+  name,
+}) => {
   const options: Highcharts.Options = {
     chart: {
       type: "column",
     },
     title: {
-      text: "Avg. Daily Production",
+      text: name,
       align: "left",
       x: 5,
     },

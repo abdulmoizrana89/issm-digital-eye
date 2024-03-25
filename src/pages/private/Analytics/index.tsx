@@ -19,34 +19,53 @@ import {
   SplineChartComponent,
   PieChartComponent,
 } from "../../../components";
-import { Random } from "../../../assets";
+import { Random, CEMENT_BAGS, BREADS } from "../../../assets";
 import TableComponent from "./Table";
 
 const Analytics = () => {
-  const chartData = [
+  const [video, setVideo] = useState(Random);
+  const [chartData, setChartData] = useState([
     {
-      name: "",
+      name: "Avg. Daily Traffic Flow",
       data: [
-        120, 150, 180, 170, 110, 130, 160, 140, 110, 130, 150, 180, 170, 110,
-        130, 160, 140, 110, 130, 150,
+        90, 80, 130, 140, 110, 60, 160, 140, 110, 190, 100, 150, 120, 140, 110,
+        100, 110, 90, 80, 50,
       ],
     },
-  ];
+  ]);
 
-  const percentageChartData = [
-    { name: "CD 5672", data: [80, 10, 40] },
-    { name: "CD 5673", data: [65, 30, 70] },
-    { name: "CD 5674", data: [75, 55, 10] },
-  ];
+  const [percentageChartData, setPercentageChartData] = useState({
+    name: "Average Monthly Flow",
+    data: [
+      { name: "CD 5672", data: [80, 10, 40] },
+      { name: "CD 5673", data: [65, 30, 70] },
+      { name: "CD 5674", data: [75, 55, 10] },
+    ],
+  });
 
-  const pieChartData = {
-    name: "Orientation",
+  const [pieChartData, setPieChartData] = useState({
+    name: "Flow Ratio",
     data: [
       { name: "Perfectly Oriented", y: 60, color: "#4DFFDF" },
       { name: "Slightly Misaligned", y: 25, color: "#F178B6" },
       { name: "Significantly Misaligned", y: 15, color: "#4DBEF5" },
     ],
-  };
+  });
+
+  const [generalStats, setGeneralStats] = useState([
+    {
+      title: "Flow Per Minute",
+      value: "10",
+    },
+    {
+      title: "Avg. Flow Per Day",
+      value: "10000",
+    },
+    {
+      title: "Flow Rate",
+      value: "46",
+    },
+  ]);
 
   const [data, setData] = useState([
     {
@@ -101,6 +120,230 @@ const Analytics = () => {
     },
   ]);
 
+  const handleChange = (e) => {
+    const { value } = e.target;
+    if (value == 1) {
+      setVideo(Random);
+      setChartData([
+        {
+          name: "Avg. Daily Traffic Flow",
+          data: [
+            90, 80, 130, 140, 110, 60, 160, 140, 110, 190, 100, 150, 120, 140,
+            110, 100, 110, 90, 80, 50,
+          ],
+        },
+      ]);
+      setPercentageChartData({
+        data: [
+          { name: "CD 6673", data: [50, 60, 20] },
+          { name: "CD 1671", data: [61, 44, 90] },
+          { name: "CD 1672", data: [11, 25, 80] },
+        ],
+        name: "Average Monthly Flow",
+      });
+      setPieChartData({
+        name: "Flow Ratio",
+        data: [
+          { name: "Perfectly Oriented", y: 60, color: "#4DFFDF" },
+          { name: "Slightly Misaligned", y: 25, color: "#F178B6" },
+          { name: "Significantly Misaligned", y: 15, color: "#4DBEF5" },
+        ],
+      });
+      setGeneralStats([
+        {
+          title: "Flow Per Minute",
+          value: "10",
+        },
+        {
+          title: "Avg. Flow Per Day",
+          value: "10000",
+        },
+        {
+          title: "Flow Rate",
+          value: "46",
+        },
+      ]);
+      setData([
+        {
+          objectDetected: "Car",
+          objectCount: 3,
+          timestamp: "2023-09-01T12:00:00Z",
+        },
+        {
+          objectDetected: "Bike",
+          objectCount: 5,
+          timestamp: "2023-09-01T12:05:00Z",
+        },
+        {
+          objectDetected: "Bus",
+          objectCount: 2,
+          timestamp: "2023-09-01T12:10:00Z",
+        },
+        {
+          objectDetected: "Truck",
+          objectCount: 1,
+          timestamp: "2023-09-01T12:15:00Z",
+        },
+        {
+          objectDetected: "Scooter",
+          objectCount: 4,
+          timestamp: "2023-09-01T12:20:00Z",
+        },
+        {
+          objectDetected: "Pedestrian",
+          objectCount: 6,
+          timestamp: "2023-09-01T12:25:00Z",
+        },
+        {
+          objectDetected: "Cyclist",
+          objectCount: 3,
+          timestamp: "2023-09-01T12:30:00Z",
+        },
+        {
+          objectDetected: "Van",
+          objectCount: 2,
+          timestamp: "2023-09-01T12:35:00Z",
+        },
+        {
+          objectDetected: "Motorbike",
+          objectCount: 5,
+          timestamp: "2023-09-01T12:40:00Z",
+        },
+        {
+          objectDetected: "Trolley",
+          objectCount: 1,
+          timestamp: "2023-09-01T12:45:00Z",
+        },
+      ]);
+    } else if (value == 2) {
+      setVideo(CEMENT_BAGS);
+      setChartData([
+        {
+          name: "Avg. Daily Production",
+          data: [
+            120, 150, 180, 170, 110, 130, 160, 140, 110, 130, 150, 180, 170,
+            110, 130, 160, 140, 110, 130, 150,
+          ],
+        },
+      ]);
+      setPercentageChartData({
+        data: [
+          { name: "CD 5672", data: [80, 10, 40] },
+          { name: "CD 5673", data: [65, 30, 70] },
+          { name: "CD 5674", data: [75, 55, 10] },
+        ],
+        name: "Average Monthly Production",
+      });
+      setPieChartData({
+        name: "Production Ratio",
+        data: [
+          { name: "Perfectly Oriented", y: 40, color: "#4DFFDF" },
+          { name: "Slightly Misaligned", y: 15, color: "#F178B6" },
+          { name: "Significantly Misaligned", y: 45, color: "#4DBEF5" },
+        ],
+      });
+      setGeneralStats([
+        {
+          title: "Production Per Minute",
+          value: "50",
+        },
+        {
+          title: "Avg. Production Per Day",
+          value: "7000",
+        },
+        {
+          title: "Production Rate",
+          value: "79",
+        },
+      ]);
+      setData([
+        {
+          objectDetected: "Cement bag type 1",
+          objectCount: 3,
+          timestamp: "2023-09-01T12:00:00Z",
+        },
+        {
+          objectDetected: "Cement bag type 2",
+          objectCount: 5,
+          timestamp: "2023-09-01T12:05:00Z",
+        },
+        {
+          objectDetected: "Cement bag type 3",
+          objectCount: 2,
+          timestamp: "2023-09-01T12:10:00Z",
+        },
+        {
+          objectDetected: "Cement bag type 4",
+          objectCount: 2,
+          timestamp: "2023-09-01T12:10:00Z",
+        },
+      ]);
+    } else if (value == 3) {
+      setVideo(BREADS);
+      setChartData([
+        {
+          name: "Avg. Daily Production",
+          data: [
+            180, 120, 100, 90, 20, 190, 110, 190, 120, 100, 120, 140, 120, 100,
+            110, 80, 90, 20, 10, 80,
+          ],
+        },
+      ]);
+      setPercentageChartData({
+        data: [
+          { name: "CD 5672", data: [10, 20, 30] },
+          { name: "CD 5673", data: [85, 10, 20] },
+          { name: "CD 5674", data: [15, 45, 90] },
+        ],
+        name: "Average Monthly Production",
+      });
+      setPieChartData({
+        name: "Production Ratio",
+        data: [
+          { name: "Perfectly Oriented", y: 70, color: "#4DFFDF" },
+          { name: "Slightly Misaligned", y: 10, color: "#F178B6" },
+          { name: "Significantly Misaligned", y: 20, color: "#4DBEF5" },
+        ],
+      });
+      setGeneralStats([
+        {
+          title: "Production Per Minute",
+          value: "100",
+        },
+        {
+          title: "Avg. Production Per Day",
+          value: "6000",
+        },
+        {
+          title: "Production Rate",
+          value: "89",
+        },
+      ]);
+      setData([
+        {
+          objectDetected: "Breads",
+          objectCount: 1,
+          timestamp: "2023-09-01T12:45:00Z",
+        },
+        {
+          objectDetected: "Biscuits",
+          objectCount: 1,
+          timestamp: "2023-09-01T12:45:00Z",
+        },
+        {
+          objectDetected: "Pizza Bread",
+          objectCount: 10,
+          timestamp: "2023-09-01T12:45:00Z",
+        },
+        {
+          objectDetected: "Sandwich",
+          objectCount: 10,
+          timestamp: "2023-09-01T12:45:00Z",
+        },
+      ]);
+    }
+  };
+
   return (
     <div className="flex pt-10 px-10">
       <div className="flex-[60%]">
@@ -113,9 +356,12 @@ const Analytics = () => {
             bg="#F9F9F9"
             borderRadius="4px"
             focusBorderColor="#ABACAC"
-            placeholder="Application Name"
+            // placeholder="Application 1"
+            onChange={handleChange}
           >
-            {/* <option value="Alpha">Alpha</option> */}
+            <option value={1}>Application Car</option>
+            <option value={2}>Application Cement</option>
+            <option value={3}>Application Bakery</option>
           </Select>
           <Flex className="justify-between mt-5">
             <Box className="border-[1px] h-[160px] w-[32%]">
@@ -128,9 +374,11 @@ const Analytics = () => {
                 />
               </Flex>
               <div className="px-5">
-                <Text className="text-[50px] text-[#13465B]">100</Text>
+                <Text className="text-[50px] text-[#13465B]">
+                  {generalStats[0]?.value}
+                </Text>
                 <Text className="font-semibold text-[16px]">
-                  Production Per Minute
+                  {generalStats[0]?.title}
                 </Text>
               </div>
             </Box>
@@ -145,9 +393,11 @@ const Analytics = () => {
                 />
               </Flex>
               <div className="px-5">
-                <Text className="text-[50px] text-[#13465B]">6000</Text>
+                <Text className="text-[50px] text-[#13465B]">
+                  {generalStats[1]?.value}
+                </Text>
                 <Text className="font-semibold text-[16px]">
-                  Avg. Production Per Day
+                  {generalStats[1]?.title}
                 </Text>
               </div>
             </Box>
@@ -164,11 +414,12 @@ const Analytics = () => {
               <div className="px-5">
                 <Flex className="items-end h-fit">
                   <Text className="text-[50px] text-[#13465B]">
-                    89<sub>%</sub>
+                    {generalStats[2]?.value}
+                    <sub>%</sub>
                   </Text>
                 </Flex>
                 <Text className="font-semibold text-[16px]">
-                  Production Rate
+                  {generalStats[2]?.title}
                 </Text>
               </div>
             </Box>
@@ -176,10 +427,17 @@ const Analytics = () => {
         </div>
         <Box className="my-[3%] flex justify-evenly">
           <Box className="w-[59%]">
-            <ColumnChartComponent title="Sales and Revenue" data={chartData} />
+            <ColumnChartComponent
+              title="Sales and Revenue"
+              data={chartData}
+              name={chartData[0]?.name}
+            />
           </Box>
           <Box className="w-[39%]">
-            <PackageTypeBreakdownChart data={percentageChartData} />
+            <PackageTypeBreakdownChart
+              data={percentageChartData.data}
+              name={percentageChartData.name}
+            />
           </Box>
         </Box>
 
@@ -188,13 +446,13 @@ const Analytics = () => {
             <SplineChartComponent month="September 2023" />
           </Box>
           <Box className="w-[39%]">
-            <PieChartComponent data={pieChartData} />
+            <PieChartComponent data={pieChartData} name={pieChartData.name} />
           </Box>
         </Box>
       </div>
       <div className="flex-[40%] mt-[82px] border-2 p-4 h-full w-full overflow-hidden flex flex-col items-center justify-center gap-y-3">
-        <video width="640px" height="360px" autoPlay loop muted>
-          <source src={Random} type="video/mp4" />
+        <video key={video} width="640px" height="360px" autoPlay loop muted>
+          <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <Divider />

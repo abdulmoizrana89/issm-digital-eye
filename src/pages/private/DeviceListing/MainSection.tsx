@@ -6,43 +6,44 @@ import { SearchField } from "../../../components";
 import DeviceListingCard from "./components/DeviceListingCard";
 import AddDeviceModal from "../Home/components/AddDeviceModal";
 
-const data = [
-  {
-    id: "1",
-    thumbnail: "",
-    name: "Meeting 1",
-    ip: "192.168.10.28",
-  },
-  {
-    id: "2",
-    thumbnail: "",
-    name: "Meeting 2",
-    ip: "192.168.10.28",
-  },
-  {
-    id: "3",
-    thumbnail: "",
-    name: "Meeting 3",
-    ip: "192.168.10.28",
-  },
-  {
-    id: "4",
-    thumbnail: "",
-    name: "Meeting 1",
-    ip: "192.168.10.28",
-  },
-  {
-    id: "5",
-    thumbnail: "",
-    name: "Meeting 1",
-    ip: "192.168.10.28",
-  },
-];
+// const data = [
+//   {
+//     id: "1",
+//     thumbnail: "",
+//     name: "Meeting 1",
+//     ip: "192.168.10.28",
+//   },
+//   {
+//     id: "2",
+//     thumbnail: "",
+//     name: "Meeting 2",
+//     ip: "192.168.10.28",
+//   },
+//   {
+//     id: "3",
+//     thumbnail: "",
+//     name: "Meeting 3",
+//     ip: "192.168.10.28",
+//   },
+//   {
+//     id: "4",
+//     thumbnail: "",
+//     name: "Meeting 1",
+//     ip: "192.168.10.28",
+//   },
+//   {
+//     id: "5",
+//     thumbnail: "",
+//     name: "Meeting 1",
+//     ip: "192.168.10.28",
+//   },
+// ];
 
 const MainSection = ({ item }: { item: string | null | any }) => {
   const [editItemId, setEditItemId] = useState(null);
   const [searchTerm, onSearchTermChange] = useState<string>("");
   const title = item?.label || "";
+  const data = item?.devices || [];
 
   return (
     <LayoutMainSection>
